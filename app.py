@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify, redirect, session
 
 # mongodb url 변경
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://ahn:sparta@cluster0.s9tldtb.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/gmo?retryWrites=true&w=majority')
 db = client.dbprestudy
 
 app = Flask(__name__)
