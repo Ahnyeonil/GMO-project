@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="kyt test">
-      <change afterPath="$PROJECT_DIR$/templates/postPage_team1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/postPage_team1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/postPage_team1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +244,7 @@
       <updated>1661242808771</updated>
       <workItem from="1661242811510" duration="392000" />
       <workItem from="1661503331770" duration="4307000" />
-      <workItem from="1661526250907" duration="578000" />
+      <workItem from="1661526250907" duration="976000" />
     </task>
     <task id="LOCAL-00001" summary="kyt test">
       <created>1661503800107</created>
