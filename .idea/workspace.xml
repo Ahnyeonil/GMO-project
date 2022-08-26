@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="kyt test">
-      <change afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/introGangneung.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/introSokcho.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/postPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gmo-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gmo-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="url_mapping &amp; basic_static_file">
+      <change afterPath="$PROJECT_DIR$/static/detail/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/home/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/intro/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/post/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gangneung/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/detail.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/introGangneung.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/intro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/introSokcho.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/postPage.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +27,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -74,12 +80,19 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/project/GMO-project/templates",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\project\GMO-project\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\project\GMO-project\templates\gangneung" />
+      <recent name="C:\project\GMO-project\static" />
+      <recent name="C:\project\GMO-project\templates\sokcho" />
+      <recent name="C:\project\GMO-project\templates\Gangneung" />
     </key>
   </component>
   <component name="RunManager">
@@ -252,7 +265,8 @@
       <option name="presentableId" value="Default" />
       <updated>1661242808771</updated>
       <workItem from="1661242811510" duration="392000" />
-      <workItem from="1661503331770" duration="4307000" />
+      <workItem from="1661503331770" duration="6093000" />
+      <workItem from="1661520104831" duration="12225000" />
     </task>
     <task id="LOCAL-00001" summary="kyt test">
       <created>1661503800107</created>
@@ -261,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661503800107</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="url_mapping &amp; basic_static_file">
+      <created>1661507856697</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661507856697</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,10 +301,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="kyt test" />
-    <option name="LAST_COMMIT_MESSAGE" value="kyt test" />
+    <MESSAGE value="url_mapping &amp; basic_static_file" />
+    <option name="LAST_COMMIT_MESSAGE" value="url_mapping &amp; basic_static_file" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661506493026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661532632677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
