@@ -1,29 +1,31 @@
+function introgangneung() {
 
-function signup() {
     $.ajax({
-        type: "POST",
-        url: "/signup",
-        data: {
-            userid: user_id,
-            userpw: user_pw,
-            username: user_name,
-            usernickname: user_nickname
-        },
+        type: "GET",
+        url: "/gangneung/intro/list",
+        data: {},
         success: function (response) {
 
-            if (response['msg'] === '회원 가입 완료!'){
-                alert(response['msg'])
-                location.replace('/login')
-            }
-            else if (response['msg'] === '동일한 id가 존재합니다!') {
-                alert(response['msg'])
-                $('#member_id').val('')
-            }
-            else if (response['msg'] === '동일한 닉네임이 존재합니다!') {
-                alert(response['msg'])
-                $('#member_nickname').val('')
-            }
+            let locations = response['locations']
 
+                for (let i = 0; i < locations.length; i++) {
+                    let title = locations[i]['title']
+                    let desc = locations[i]['desc']
+                    let img = locations[i]['image']
+
+                    let temp_html = `<div class="col">
+                                        <div class="card h-100">
+                                            <img src=${img}
+                                                 class="card-img-top">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${title}</h5>
+                                                <p class="card-text">${desc}</p>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                    $('#cards-box').append(temp_html)
+                }
         }
     })
 }
