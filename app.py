@@ -22,7 +22,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route("/introgangneung", methods=["POST", "GET"])
+@app.route("/gangneung/intro", methods=["POST", "GET"])
 def intro_gangneung():
     return render_template("gangneung/intro.html")
 

@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="url_mapping &amp; basic_static_file">
-      <change afterPath="$PROJECT_DIR$/static/detail/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/home/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/intro/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/post/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/gangneung/post.html" afterDir="false" />
+    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="포스팅 기능 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/introGangneung.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/intro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/introSokcho.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/postPage.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +253,7 @@
       <updated>1661242808771</updated>
       <workItem from="1661242811510" duration="392000" />
       <workItem from="1661503331770" duration="6093000" />
-      <workItem from="1661520104831" duration="12225000" />
+      <workItem from="1661520104831" duration="13429000" />
     </task>
     <task id="LOCAL-00001" summary="kyt test">
       <created>1661503800107</created>
@@ -282,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661507856697</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="포스팅 기능 구현">
+      <created>1661533458380</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1661533458380</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +296,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="kyt test" />
     <MESSAGE value="url_mapping &amp; basic_static_file" />
-    <option name="LAST_COMMIT_MESSAGE" value="url_mapping &amp; basic_static_file" />
+    <MESSAGE value="포스팅 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="포스팅 기능 구현" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
