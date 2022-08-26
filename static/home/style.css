@@ -15,7 +15,6 @@ a {
 
 /* nav 시작 */
 .navbar {
-  top: 0;
   position: -webkit-sticky;
   position: sticky;
   display: flex;
@@ -93,7 +92,6 @@ video {
 .main-bg {
   width: 100%;
   overflow: hidden;
-  margin: 0;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -110,7 +108,7 @@ video {
   border-bottom: 5px solid #000000a9;
 }
 
-/* 본문 2 시작 */
+/* 본문 시작 */
 .cards-list {
   padding-top: 125px;
   z-index: 0;
