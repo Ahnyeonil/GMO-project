@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-weight: 300;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* nav 시작 */
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+  font-size: 18px;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding-bottom: 10px;
+  z-index: 99999;
+}
+.main-nav {
+  display: flex;
+  margin-right: 30px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.main-nav li {
+  list-style: none;
+  padding-top: 10px;
+}
+.nav-links {
+  margin-left: 40px;
+}
+.nav-links:hover,
+.logo:hover {
+  color: #fff;
+}
+
+.nav-links, .logo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.logo {
+  font-weight: bold;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.text-truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 34rem;
+}
+
+/* nav 끝 */
+
+h1 {
+  font-size: 30px;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+video {
+  width: 100%;
+  background-position: center;
+  object-fit: fill;
+}
+.main-bg {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.main-text {
+  position: absolute;
+  width: 100%;
+  top: 25%;
+}
+.main-bg h1 span {
+  overflow: hidden;
+  text-align: center;
+  font-size: 50px;
+  color: #000000a9;
+  border-bottom: 5px solid #000000a9;
+}
+
+/* 본문 시작 */
+.cards-list {
+  padding-top: 125px;
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.3);
+  background-blend-mode: multiply;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+}
+
+.card1 {
+  margin: 30px auto;
+  width: 800px;
+  height: 300px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+.card1 .card-img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+.card-img img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.card1 .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -200px;
+  height: 40px;
+}
+.card1:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+}
+.card_title {
+  color: #FFF;
+}
+.card_title p {
+  margin-top: 25px;
+}
+/* 본문 2 끝 */
