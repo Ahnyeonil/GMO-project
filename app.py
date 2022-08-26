@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, jsonify, redirect, session
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/gmo?retryWrites=true&w=majority')
 db = client.dbprestudy
-
+# kyt test
 app = Flask(__name__)
 
 # ayi
