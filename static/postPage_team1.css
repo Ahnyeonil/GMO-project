@@ -7,7 +7,7 @@
       --padding: 12px;
 
       /*Font Size*/
-      --font-large: 90px;
+      --font-large: 70px;
       --font-medium: 14px;
       --font-small: 12px;
       --font-micro: 10px;
@@ -35,9 +35,13 @@
         height: 300px;
 
         padding: var(--padding);
-        font-family: 'East Sea Dokdo', cursive;
-        color: rgba(255,255,255,0.8);
+        font-family: 'Black Han Sans', sans-serif;
+        color: white;
         font-size: var(--font-large);
+        font-weight: lighter;
+        line-height: 65px;
+        /*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+        /*-webkit-text-stroke: 2px white;*/
         /*text-shadow: 1px 1px 5px var(--black-color);, 0 0 5em var(--white-color);, 0 0 0.2em blue;*/
-        background-image: url("https://images7.alphacoders.com/370/370162.jpg");
+        background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
    }
