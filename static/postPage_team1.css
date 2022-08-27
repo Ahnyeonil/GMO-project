@@ -1,0 +1,241 @@
+    :root {
+        /*Color*/
+        --white-color: #FFFFFF;
+        --black-color: #181818;
+        --gray-light-color: #A9A9A9;
+        --blue-color: #79B2DF;
+
+        /*Font Size*/
+        --font-large: 55px;
+        --font-medium: 18px;
+   }
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        list-style: none;
+        border: none;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    ::placeholder, select, button, textarea {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: var(--black-color);
+        font-weight: 400;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        top: 0px;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: 18px;
+
+        background-color: var(--white-color);
+        width: 100%;
+        height: 60px;
+        padding: 20px 6% 15px 6%;
+    }
+
+    nav .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 30px;
+    }
+
+    nav .logo:hover {
+        cursor: pointer;
+    }
+
+    nav .logo i {
+        color: var(--blue-color);
+        margin-right: 10px;
+        padding-bottom: 7px;
+    }
+
+    nav .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .see-review, .see-area {
+        width: 60px;
+        height: 30px;
+
+        border-radius: 25px;
+        padding-top: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav .see-area:hover, nav .see-review:hover {
+        cursor: pointer;
+        background-color: var(--blue-color);
+        color: var(--white-color);
+    }
+
+    header {
+        background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
+        background-position: center;
+        background-size: cover;
+        position: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 250px;
+        padding-top: 10px;
+
+        font-family: 'Black Han Sans', sans-serif;
+        color: var(--white-color);
+        font-size: var(--font-large);
+        font-weight: lighter;
+        line-height: 55px;
+   }
+
+    header span:hover {
+        cursor: pointer;
+    }
+
+    .page-dsc {
+        width: 100%;
+        height: 60px;
+
+        padding: 5px 0 0 7%;
+        margin-bottom: 5px;
+        border-bottom: solid 1px var(--gray-light-color);
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: var(--font-medium);
+    }
+
+    .post-box {
+        width: 100%;
+        height: 500px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        padding: 0 7%;
+    }
+
+    .city, .area, .star {
+        width: 33%;
+        height: 40px;
+    }
+
+    select:hover {
+        cursor: pointer;
+    }
+
+    .v-line {
+        border-left : solid 1px var(--gray-light-color);
+        height : 25px;
+        margin-right: 10px;
+    }
+
+    .write {
+        width: 86%;
+        height: 100%;
+        margin: 5px 0 30px 0;
+
+        display: flex;
+        flex-direction: column;
+        border: solid 1px var(--gray-light-color);
+    }
+
+    .post-title {
+        padding: 30px 30px 0 30px;
+        width: 100%;
+    }
+
+    .post-dsc {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+    }
+
+    textarea {
+        width: 100%;
+        height: 100%;
+        resize: none;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+
+    .submitArea {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .submit {
+        width: 100px;
+        height: 40px;
+
+        background-color: var(--black-color);
+        margin: 0 30px 30px 0;
+
+        border: none;
+        border-radius: 12px;
+
+        color: var(--white-color);
+        font-weight: 700;
+    }
+
+    .submit:hover {
+        cursor: pointer;
+        background-color: var(--blue-color);
+    }
+
+    @media screen and (min-width: 1024px) {
+        /*body {*/
+        /*    margin: 0 13%;*/
+        /*}*/
+
+        .write {
+            width: 70%;
+        }
+
+        nav {
+            padding: 20px 15% 15px 15%;
+        }
+
+        .page-dsc {
+            padding: 5px 0 0 15%;
+        }
+
+        .info {
+            padding: 0 15%;
+        }
+    }
