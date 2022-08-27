@@ -1,17 +1,13 @@
     :root {
-      /*Color*/
-      --white-color: #FFFFFF;
-      --black-color: #181818;
-      --gray-light-color: #A9A9A9;
+        /*Color*/
+        --white-color: #FFFFFF;
+        --black-color: #181818;
+        --gray-light-color: #A9A9A9;
+        --blue-color: #79B2DF;
 
-      /*Size*/
-      --padding: 12px;
-
-      /*Font Size*/
-      --font-large: 55px;
-      --font-medium: 14px;
-      --font-small: 12px;
-      --font-micro: 10px;
+        /*Font Size*/
+        --font-large: 55px;
+        --font-medium: 18px;
    }
 
     *{
@@ -20,7 +16,6 @@
         box-sizing: border-box;
         list-style: none;
         border: none;
-
     }
 
     :focus {
@@ -37,29 +32,71 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin: 20px 20px 15px 20px;
+        align-items: center;
+
+        position: sticky;
+        top: 0px;
+
         font-family: 'Black Han Sans', sans-serif;
-        font-weight: lighter;
         font-size: 18px;
+
+        background-color: var(--white-color);
+        width: 100%;
+        height: 60px;
+        padding: 20px 6% 15px 6%;
+    }
+
+    nav .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 30px;
+    }
+
+    nav .logo:hover {
+        cursor: pointer;
     }
 
     nav .logo i {
-        color: #79B2DF;
+        color: var(--blue-color);
+        margin-right: 10px;
+        padding-bottom: 7px;
     }
 
-    nav .menu .show {
-        margin-right: var(--padding);
+    nav .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .see-review, .see-area {
+        width: 60px;
+        height: 30px;
+
+        border-radius: 25px;
+        padding-top: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav .see-area:hover, nav .see-review:hover {
+        cursor: pointer;
+        background-color: var(--blue-color);
+        color: var(--white-color);
     }
 
     header {
+        background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
         background-position: center;
         background-size: cover;
-        display: flex;
+        position: center;
 
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position: center;
 
         width: 100%;
         height: 250px;
@@ -70,67 +107,77 @@
         font-size: var(--font-large);
         font-weight: lighter;
         line-height: 55px;
-        background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
    }
 
-    .post-box {
-        background-color: var(--white-color);
-        /*border: solid 1px var(--gray-light-color);*/
-        border-radius: 20px;
-        margin:  10px auto 20px auto;
-        padding: 20px;
-        width: 80%;
-        height: 500px;
-        /*background-color: #181818;*/
-        display: flex;
-        flex-direction: column;
-    }
+    .page-dsc {
+        width: 100%;
+        height: 60px;
 
-    .post-box-header {
+        padding: 5px 0 0 7%;
+        margin-bottom: 5px;
+        border-bottom: solid 1px var(--gray-light-color);
+
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: 20px auto 25px auto;
-        font-weight: lighter;
-        font-size: 18px;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: var(--font-medium);
+    }
+
+    .post-box {
+        width: 100%;
+        height: 500px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .info {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
-        border: solid 1px var(--gray-light-color);
-        border-radius: 10px;
-        height: 60px;
+
+        width: 100%;
+        padding: 0 7%;
     }
 
     .city, .area, .star {
-        width: 30%;
-        /*flex: 1 1 30%;*/
+        width: 33%;
+        height: 40px;
+    }
+
+    select:hover {
+        cursor: pointer;
+    }
+
+    .v-line {
+        border-left : solid 1px var(--gray-light-color);
+        height : 25px;
+        margin-right: 10px;
     }
 
     .write {
-        /*background-color: cornsilk;*/
+        width: 86%;
+        height: 100%;
+        margin: 5px 0 30px 0;
+
         display: flex;
         flex-direction: column;
-        height: 100%;
-    }
-
-    .title {
-        height: 40px;
-        margin-bottom: 20px;
-        border-bottom: solid 1px var(--gray-light-color);
-    }
-
-    .dsc {
-        height: 100%;
-        /*background-color: black;*/
         border: solid 1px var(--gray-light-color);
-        border-radius: 20px;
-        padding: 20px;
-        margin-bottom: 20px;
-        /*color: white;*/
+    }
+
+    .post-title {
+        padding: 30px 30px 0 30px;
+        width: 100%;
+    }
+
+    .post-dsc {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
     }
 
     textarea {
@@ -151,24 +198,40 @@
     .submit {
         width: 100px;
         height: 40px;
-        border: solid 1px var(--gray-light-color);
-        border-radius: 20px;
-        background-color: var(--white-color);
+
+        background-color: var(--black-color);
+        margin: 0 30px 30px 0;
+
+        border: none;
+        border-radius: 12px;
+
+        color: var(--white-color);
+        font-weight: 700;
     }
 
     .submit:hover {
-        background-color: var(--black-color);
-        border: none;
-        color: var(--white-color);
         cursor: pointer;
+        background-color: var(--blue-color);
     }
 
-   select:hover {
-       cursor: pointer;
-   }
+    @media screen and (min-width: 1024px) {
+        body {
+            margin: 0 13%;
+        }
 
-    @media screen and (min-width: 768px){
-        .post-box {
-            width: 600px;
+        .write {
+            width: 100%;
+        }
+
+        nav {
+            padding: 20px 0 15px 0;
+        }
+
+        .page-dsc {
+            padding: 5px 0 0 30px;
+        }
+
+        .info {
+            padding: 0 30px;
         }
     }

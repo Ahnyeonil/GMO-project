@@ -22,8 +22,12 @@
             <span class="nav-title">GMO</span>
         </div>
         <div class="menu">
-            <span class="show">관광</span>
-            <span class="post">후기</span>
+            <div class="see-area">
+                <span>관광</span>
+            </div>
+            <div class="see-review">
+                <span>후기</span>
+            </div>
         </div>
     </nav>
 
@@ -32,31 +36,34 @@
         <span class="header-line-1">강원도로</span><span>마실올래?</span>
     </header>
 
+    <div class="page-dsc">
+            <span>여행 후기 등록하기</span>
+    </div>
+
 <!--Posting Area-->
     <div class="post-box">
-        <div class="post-box-header">
-            <span>여행 후기 등록하기</span>
-        </div>
         <div class="info">
             <input type="text" class="city" placeholder="지역">
-            <input type="text" class="area" placeholder="장소">
-            <select class="star">
-                <option selected> 별점 선택</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
+                <div class='v-line'></div>
+                <input type="text" class="area" placeholder="장소">
+                <div class='v-line'></div>
+                <select class="star">
+                    <option selected>별점 선택</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
         </div>
         <div class="write">
-            <input type="text" class="title" placeholder="제목">
-            <div class="dsc">
+            <input type="text" class="post-title" placeholder="제목">
+            <div class="post-dsc">
                 <textarea placeholder="내용을 입력하세요"></textarea>
             </div>
-        </div>
-        <div class="submitArea">
-        <button class="submit">등록</button>
+            <div class="submitArea">
+                <button class="submit">등록</button>
+            </div>
         </div>
     </div>
 
