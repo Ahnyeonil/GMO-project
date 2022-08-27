@@ -19,7 +19,23 @@
         box-sizing: border-box;
         list-style: none;
         border: none;
+
     }
+
+    :focus {
+        outline: none;
+    }
+
+    ::placeholder, select, button, textarea {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: black;
+        font-weight: 400;
+    }
+
+    .post-box-header {
+        font-family: 'Black Han Sans', sans-serif;
+    }
+
 
 
     header {
@@ -49,7 +65,9 @@
 
     .post-box {
         border: solid 1px black;
+        border-radius: 20px;
         margin:  40px auto;
+        padding: 20px;
         width: 80%;
         height: 500px;
         /*background-color: #181818;*/
@@ -57,14 +75,24 @@
         flex-direction: column;
     }
 
-    .input-area {
-        /*background-color: aquamarine;*/
+    .post-box-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto 40px auto;
+        font-weight: lighter;
+        font-size: 30px;
     }
+
 
     .info {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+        margin-bottom: 20px;
+        border: solid 1px black;
+        border-radius: 10px;
+        height: 60px;
     }
 
     .city, .area, .star {
@@ -79,6 +107,51 @@
         height: 100%;
     }
 
+    .title {
+        height: 40px;
+        margin-bottom: 20px;
+        border-bottom: solid 1px black;
+    }
+
     .dsc {
         height: 100%;
+        /*background-color: black;*/
+        border: solid 1px black;
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        /*color: white;*/
     }
+
+    textarea {
+        width: 100%;
+        height: 100%;
+        resize: none;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+
+    .submitArea {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .submit {
+        width: 100px;
+        height: 40px;
+        border: solid 1px black;
+        border-radius: 20px;
+        background-color: white;
+    }
+
+    .submit:hover {
+        background-color: black;
+        color: white;
+       cursor: pointer;
+    }
+
+   select:hover {
+       cursor: pointer;
+   }

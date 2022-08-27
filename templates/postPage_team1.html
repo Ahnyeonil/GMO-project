@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <body>
 <!--Header-->
     <header>
@@ -18,6 +21,9 @@
 
 <!--Posting Area-->
     <div class="post-box">
+        <div class="post-box-header">
+            <span>여행 후기 등록하기</span>
+        </div>
         <div class="info">
             <input type="text" class="city" placeholder="지역">
             <input type="text" class="area" placeholder="장소">
@@ -32,9 +38,13 @@
         </div>
         <div class="write">
             <input type="text" class="title" placeholder="제목">
-            <textarea class="dsc" placeholder="내용을 입력하세요"></textarea>
+            <div class="dsc">
+                <textarea placeholder="내용을 입력하세요"></textarea>
+            </div>
         </div>
-        <button class="submit">저장</button>
+        <div class="submitArea">
+        <button class="submit">등록</button>
+        </div>
     </div>
 
 <!--    <br >-->
