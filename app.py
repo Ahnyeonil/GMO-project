@@ -2,10 +2,7 @@
 import os
 import random
 import string
-<<<<<<< HEAD
 import requests
-=======
->>>>>>> 0b83f04e544643c2ef9f5832b448a4912e8bdc10
 
 from flask import Flask, render_template, request, jsonify, redirect, session
 from bs4 import BeautifulSoup
@@ -33,14 +30,13 @@ def home():
 def intro_sokcho():
     return render_template("/sokcho/intro.html")
 
-<<<<<<< HEAD
 @app.route("/sokcho/postPage", methods=["POST", "GET"])
 def post_sokcho():
     if request.method == 'GET':
         return render_template("/sokcho/postPage.html")
     elif request.method == 'POST':
         return jsonify({'msg': '포스트 요청을 받았습니다.'})
-=======
+
 @app.route("/gangneung/intro", methods=["POST", "GET"])
 def intro_gangneung():
     return render_template("gangneung/intro.html")
@@ -89,8 +85,6 @@ def post():
         return render_template("gangneung/post.html")
 
     return render_template("gangneung/post.html")
->>>>>>> 0b83f04e544643c2ef9f5832b448a4912e8bdc10
-
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
