@@ -2,6 +2,7 @@
       /*Color*/
       --white-color: #FFFFFF;
       --black-color: #181818;
+      --gray-light-color: #A9A9A9;
 
       /*Size*/
       --padding: 12px;
@@ -28,15 +29,36 @@
 
     ::placeholder, select, button, textarea {
         font-family: 'Noto Sans KR', sans-serif;
-        color: black;
+        color: var(--black-color);
         font-weight: 400;
     }
 
-    .post-box-header {
-        font-family: 'Black Han Sans', sans-serif;
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--padding);
+        background-color: var(--black-color);
+        color: var(--white-color);
     }
 
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px 20px;
+    }
 
+    nav .logo {
+        font-size: var(--font-medium);
+    }
+
+    nav .logo i {
+        color: #79B2DF;
+    }
+
+    nav .menu .show {
+        margin-right: var(--padding);
+    }
 
     header {
         background-position: center;
@@ -53,18 +75,16 @@
 
         padding: var(--padding);
         font-family: 'Black Han Sans', sans-serif;
-        color: white;
+        color: var(--white-color);
         font-size: var(--font-large);
         font-weight: lighter;
         line-height: 65px;
         background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
    }
 
-        /*justify-content: center;*/
-        /*align-items: center;*/
-
     .post-box {
-        border: solid 1px black;
+        background-color: var(--white-color);
+        /*border: solid 1px var(--gray-light-color);*/
         border-radius: 20px;
         margin:  40px auto;
         padding: 20px;
@@ -77,20 +97,19 @@
 
     .post-box-header {
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
         margin: 20px auto 40px auto;
         font-weight: lighter;
-        font-size: 30px;
+        font-size: 18px;
     }
-
 
     .info {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 20px;
-        border: solid 1px black;
+        border: solid 1px var(--gray-light-color);
         border-radius: 10px;
         height: 60px;
     }
@@ -110,13 +129,13 @@
     .title {
         height: 40px;
         margin-bottom: 20px;
-        border-bottom: solid 1px black;
+        border-bottom: solid 1px var(--gray-light-color);
     }
 
     .dsc {
         height: 100%;
         /*background-color: black;*/
-        border: solid 1px black;
+        border: solid 1px var(--gray-light-color);
         border-radius: 20px;
         padding: 20px;
         margin-bottom: 20px;
@@ -141,17 +160,24 @@
     .submit {
         width: 100px;
         height: 40px;
-        border: solid 1px black;
+        border: solid 1px var(--gray-light-color);
         border-radius: 20px;
-        background-color: white;
+        background-color: var(--white-color);
     }
 
     .submit:hover {
-        background-color: black;
-        color: white;
-       cursor: pointer;
+        background-color: var(--black-color);
+        border: none;
+        color: var(--white-color);
+        cursor: pointer;
     }
 
    select:hover {
        cursor: pointer;
    }
+
+    @media screen and (min-width: 768px){
+        .post-box {
+            width: 600px;
+        }
+    }
