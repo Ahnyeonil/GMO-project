@@ -17,9 +17,6 @@ db = client.dbgmo
 
 app = Flask(__name__)
 
-# 공통
-headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-
 # ayi
 @app.route("/")
 def home():
@@ -27,11 +24,35 @@ def home():
 
 @app.route("/sokcho/intro", methods=["POST", "GET"])
 def intro_sokcho():
-    # 속초 크롤링
-    data_sokcho = requests.get('https://kr.hotels.com/go/south-korea/kr-best-sokcho-things-to-do')
-    soup_sokcho = BeautifulSoup(data_sokcho.text, 'html.parser')
+    locationlist = list()
 
-    return render_template("/sokcho/intro.html")
+    # 속초 크롤링
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/104.0.0.0 Safari/537.36'}
+    data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-sokcho-things-to-do')
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    places = soup.select(
+        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > div.listicle-item-wrap > div')
+
+    for place in places:
+        title = place.select_one('div > div.header-wrap > div.header-inner-wrap').text
+        desc = place.select_one('div > div.content-wrap > div.description-wrap > p').text
+        tag = list()
+
+        tags = place.select('div > div.content-wrap > div.tag-container > ul > li')
+        for num in range(len(tags)):
+            tag.append('#' + tags[num].text)
+
+        locationlist += [{
+            'title' : title,
+            'tag' : tag,
+            'desc' : desc,
+            'link' : 'https://map.naver.com/v5/search/' + title + '/place'
+        }]
+
+    return render_template("/sokcho/intro.html", locationlist=locationlist)
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
@@ -122,7 +143,7 @@ def post():
             'star': int(star_receive),
             'file': filename
         }
-        
+
         # DB에 저장
         db.posting.insert_one(doc)
 
