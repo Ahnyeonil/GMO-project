@@ -31,7 +31,7 @@ def intro_gangneung():
 
 
 @app.route("/gangneung/intro/list", methods=["GET"])
-def intro_gangneung_list():
+def intro_gangneung_list_send():
     # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -55,7 +55,7 @@ def intro_gangneung_list():
             image = c['data-lazy-src']
 
             # print(title + '\n' + desc + '\n' + image + '\n')
-            # 반복문 돌아가며 딕셔너리 배열로 만들기
+            # 반복문 돌려가며 딕셔너리 배열로 만들기
             locationlist += [{
                 'title': title,
                 'desc': desc,
@@ -108,13 +108,25 @@ def post():
         # DB에 저장
         db.posting.insert_one(doc)
 
-        return render_template("gangneung/post.html")
+        success_msg = "포스팅 완료되었습니다"
+
+        return render_template("gangneung/post.html", success_msg=success_msg)
 
     return render_template("gangneung/post.html")
 
 
+@app.route("/post/list", methods=["POST", "GET"])
+def post_list_send():
+
+    all_post = list(db.posting.find({}, {'_id': False}))
+    # print(all_post)
+
+    return jsonify({'posts': all_post})
+
+
 @app.route("/detail", methods=["POST", "GET"])
 def detail():
+
     return render_template("gangneung/detail.html")
 
 
