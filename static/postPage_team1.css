@@ -109,7 +109,7 @@
         line-height: 55px;
    }
 
-    header:hover {
+    header span:hover {
         cursor: pointer;
     }
 
