@@ -1,3 +1,4 @@
+
 function gangneung_list_call() {
 
     $.ajax({
@@ -53,7 +54,7 @@ function post_list_call() {
                                      <div class="card_content">
                                        <h2 class="card_title">${title}</h2>
                                        <p class="card_text">${desc}</p>
-                                       <a href="/test"><button class="btn card_btn">Read More</button></a>
+                                       <a><button class="btn card_btn" onclick="detail_list_call('${title}')">Read More</button></a>
                                      </div>
                                    </div>
                                  </li>`
@@ -64,29 +65,31 @@ function post_list_call() {
     })
 }
 
-// function detail_list_call() {
-//
-//     $.ajax({
-//         type: "GET",
-//         url: "/detail/list",
-//         data: {},
-//         success: function (response) {
-//
-//             console.log(response)
-//
-//             // let posts = response['posts']
-//             //
-//             // for (let i = 0; i < posts.length; i++) {
-//             //     let title = posts[i]['title']
-//             //     let desc = posts[i]['desc']
-//             //     // let writerid = posts[i]['writerid']
-//             //     // let star = posts[i]['star']
-//             //     let file = posts[i]['file']
-//             //
-//             //     let temp_html = ``
-//             //
-//             //     $('.cards').append(temp_html)
-//             // }
-//         }
-//     })
-// }
+function detail_list_call(title) {
+
+    // let title = $('.card_title').val()
+    // console.log(title)
+
+    $.ajax({
+        type: "POST",
+        url: "/detail/list",
+        data: {titlename: title},
+        success: function (response) {
+
+            // console.log(response)
+
+            if(response['postdetail'] === undefined)
+                alert(response['msg'])
+
+            let postdetail = response['postdetail']
+
+            console.log(postdetail)
+            //
+            //
+            //     let temp_html = ``
+            //
+            //     $('').append(temp_html)
+            // }
+        }
+    })
+}

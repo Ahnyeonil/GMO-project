@@ -129,16 +129,20 @@ def detail():
 
     return render_template("gangneung/detail.html")
 
-#
-# @app.route("/detail/list", methods=["POST", "GET"])
-# def detail_list_send():
-#
-#     if request.method == post:
-#         title_recieve = request.form['title']
-#         user_title = db.posting.find_one({'title': title_recieve}, {'_id': False})
-#         print(user_title)
-#
-#         return jsonify({'posts': user_title})
+
+@app.route("/detail/list", methods=["POST", "GET"])
+def detail_list_send():
+
+    if request.method == 'POST':
+        titlename_receive = request.form['titlename']
+        userfind = db.posting.find_one({'title': titlename_receive}, {'_id': False})
+
+        print("찾아 낸 document : ", userfind)
+
+        if userfind is None:
+            return jsonify({'msg': '제목으로 상세 페이지를 찾을 수 없습니다'})
+
+        return jsonify({'postdetail': userfind})
 
 
 if __name__ == '__main__':
