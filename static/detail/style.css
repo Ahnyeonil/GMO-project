@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-weight: 300;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* nav 시작 */
+.navbar {
+  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+  font-size: 18px;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding-bottom: 10px;
+  z-index: 99999;
+}
+.main-nav {
+  display: flex;
+  margin-right: 30px;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.main-nav li {
+  list-style: none;
+  padding-top: 10px;
+}
+.nav-links {
+  margin-left: 40px;
+}
+.nav-links:hover,
+.logo:hover {
+  color: #fff;
+}
+
+.nav-links, .logo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.logo {
+  font-weight: bold;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+/* nav 끝 */
+
+.list {
+  background-color: rgba(0,0,0,0.5);
+  float: left;
+  width: 20%;
+  height: 100vh;
+}
+
+.content {
+  background-color: aquamarine;
+  float: left;
+  width: 80%;
+  height: 100vh;
+}

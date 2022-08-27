@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../static/post/style.css">
+  <title>G.M.O</title>
+</head>
+
+<body>
+  <!-- nav bar 시작 -->
+  <nav class="navbar">
+    <a href="/static" class="logo">G.M.O</a>
+    <ul class="main-nav">
+      <li><a href="#" class="nav-links">Menu1</a></li>
+      <li><a href="#" class="nav-links">Menu2</a></li>
+      <li><a href="#" class="nav-links">Menu3</a></li>
+      <li><a href="#" class="nav-links">Menu4</a></li>
+    </ul>
+  </nav>
+  <!-- nav bar 끝 -->
+
+  <!-- 포스팅 모달창 시작 -->
+  <div id="popup" class="popup">
+    <a href="#" class="close">&times;</a>
+    <h2>Posting</h2>
+    <form class="posting" method="post" enctype="multipart/form-data">
+      <div>별점을 선택해주세요</div>
+      <div class="user-box">
+        <select name="star">
+          <option value="1">⭑</option>
+          <option value="2">⭑⭑</option>
+          <option value="3">⭑⭑⭑</option>
+          <option value="4">⭑⭑⭑⭑</option>
+          <option value="5">⭑⭑⭑⭑⭑</option>
+        </select>
+      </div>
+      <div class="user-box">
+        <input type="file" id="post-img" name="file" required="">
+        <label>Image</label>
+      </div>
+      <div class="user-box">
+        <input id="post-title" type="text" name="title" required="">
+        <label>Title</label>
+      </div>
+      <div class="user-box">
+        <input id="post-comment" name="desc" required="">
+        <label>Comment</label>
+      </div>
+
+      <div class="user-box">
+        <input id="post-username" type="text" name="writerid" required="">
+        <label>Username</label>
+      </div>
+      <button class="submit-btn" type="submit">Submit</button>
+    </form>
+  </div>
+  <a href="#" class="close-popup"></a>
+  <!-- 포스팅 모달창 시작 -->
+
+
+  <div class="main">
+
+    <div class="post-btn-wrap">
+      <a href="#popup"><button class="post-btn">posting</button></a>
+    </div>
+
+    <ul class="cards">
+
+      <li class="card-item">
+        <div class="card">
+            <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="card">
+          <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="card">
+          <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="card">
+          <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="card">
+          <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="card-item">
+        <div class="card">
+          <div class="card-image"><img src="https://i.redd.it/b3esnz5ra34y.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title">Title</h2>
+            <p class="card_text">Card Text</p>
+            <a href="/test"><button class="btn card_btn">Read More</button></a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+</body>
+</html>
