@@ -109,6 +109,10 @@
         line-height: 55px;
    }
 
+    header:hover {
+        cursor: pointer;
+    }
+
     .page-dsc {
         width: 100%;
         height: 60px;
