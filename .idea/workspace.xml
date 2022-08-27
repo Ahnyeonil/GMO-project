@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="포스팅 기능, 크롤링 구현">
+    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="포스팅 기능, 크롤링 구현, 포스팅 목록으로 데이터 전송 후 뿌려주기(수정 필요)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gangneung/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gangneung/intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/intro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gangneung/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +284,8 @@
       <workItem from="1661550913410" duration="3681000" />
       <workItem from="1661554661254" duration="107000" />
       <workItem from="1661554782804" duration="59000" />
-      <workItem from="1661595049678" duration="204000" />
+      <workItem from="1661595049678" duration="396000" />
+      <workItem from="1661598971767" duration="1586000" />
     </task>
     <task id="LOCAL-00001" summary="kyt test">
       <created>1661503800107</created>
@@ -324,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661549014246</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="포스팅 기능, 크롤링 구현, 포스팅 목록으로 데이터 전송 후 뿌려주기(수정 필요)">
+      <created>1661595258451</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1661595258451</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,11 +352,12 @@
     <MESSAGE value="포스팅 기능 구현" />
     <MESSAGE value="포스팅 기능 구현 (강릉 url 수정)" />
     <MESSAGE value="포스팅 기능, 크롤링 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="포스팅 기능, 크롤링 구현" />
+    <MESSAGE value="포스팅 기능, 크롤링 구현, 포스팅 목록으로 데이터 전송 후 뿌려주기(수정 필요)" />
+    <option name="LAST_COMMIT_MESSAGE" value="포스팅 기능, 크롤링 구현, 포스팅 목록으로 데이터 전송 후 뿌려주기(수정 필요)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1661536796233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661554814136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661599587059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

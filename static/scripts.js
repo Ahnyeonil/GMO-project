@@ -63,3 +63,30 @@ function post_list_call() {
         }
     })
 }
+
+// function detail_list_call() {
+//
+//     $.ajax({
+//         type: "GET",
+//         url: "/detail/list",
+//         data: {},
+//         success: function (response) {
+//
+//             console.log(response)
+//
+//             // let posts = response['posts']
+//             //
+//             // for (let i = 0; i < posts.length; i++) {
+//             //     let title = posts[i]['title']
+//             //     let desc = posts[i]['desc']
+//             //     // let writerid = posts[i]['writerid']
+//             //     // let star = posts[i]['star']
+//             //     let file = posts[i]['file']
+//             //
+//             //     let temp_html = ``
+//             //
+//             //     $('.cards').append(temp_html)
+//             // }
+//         }
+//     })
+// }

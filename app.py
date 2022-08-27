@@ -129,6 +129,17 @@ def detail():
 
     return render_template("gangneung/detail.html")
 
+#
+# @app.route("/detail/list", methods=["POST", "GET"])
+# def detail_list_send():
+#
+#     if request.method == post:
+#         title_recieve = request.form['title']
+#         user_title = db.posting.find_one({'title': title_recieve}, {'_id': False})
+#         print(user_title)
+#
+#         return jsonify({'posts': user_title})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
