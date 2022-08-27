@@ -219,23 +219,23 @@
     }
 
     @media screen and (min-width: 1024px) {
-        body {
-            margin: 0 13%;
-        }
+        /*body {*/
+        /*    margin: 0 13%;*/
+        /*}*/
 
         .write {
-            width: 100%;
+            width: 70%;
         }
 
         nav {
-            padding: 20px 0 15px 0;
+            padding: 20px 15% 15px 15%;
         }
 
         .page-dsc {
-            padding: 5px 0 0 30px;
+            padding: 5px 0 0 15%;
         }
 
         .info {
-            padding: 0 30px;
+            padding: 0 15%;
         }
     }
