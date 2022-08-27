@@ -8,7 +8,7 @@
       --padding: 12px;
 
       /*Font Size*/
-      --font-large: 70px;
+      --font-large: 55px;
       --font-medium: 14px;
       --font-small: 12px;
       --font-micro: 10px;
@@ -33,23 +33,14 @@
         font-weight: 400;
     }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        padding: var(--padding);
-        background-color: var(--black-color);
-        color: var(--white-color);
-    }
-
     nav {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin: 10px 20px;
-    }
-
-    nav .logo {
-        font-size: var(--font-medium);
+        margin: 20px 20px 15px 20px;
+        font-family: 'Black Han Sans', sans-serif;
+        font-weight: lighter;
+        font-size: 18px;
     }
 
     nav .logo i {
@@ -71,14 +62,14 @@
         position: center;
 
         width: 100%;
-        height: 300px;
+        height: 250px;
+        padding-top: 10px;
 
-        padding: var(--padding);
         font-family: 'Black Han Sans', sans-serif;
         color: var(--white-color);
         font-size: var(--font-large);
         font-weight: lighter;
-        line-height: 65px;
+        line-height: 55px;
         background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
    }
 
@@ -86,7 +77,7 @@
         background-color: var(--white-color);
         /*border: solid 1px var(--gray-light-color);*/
         border-radius: 20px;
-        margin:  40px auto;
+        margin:  10px auto 20px auto;
         padding: 20px;
         width: 80%;
         height: 500px;
@@ -99,7 +90,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin: 20px auto 40px auto;
+        margin: 20px auto 25px auto;
         font-weight: lighter;
         font-size: 18px;
     }
