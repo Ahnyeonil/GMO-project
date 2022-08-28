@@ -57,6 +57,9 @@ li {
     background-repeat: no-repeat;
     background-size: cover;
 }
+main {
+    padding: 0 0 50px 0;
+}
 
 /* Tour Header */
 .tour-header {
@@ -121,7 +124,7 @@ li {
 
 .dropdown-menu {
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     width: 130px;
@@ -132,6 +135,10 @@ li {
     right: 80px;
     text-align: center;
     transition: transform 1000ms;
+}
+
+.dropdown-menu.active {
+    display: flex;
 }
 
 .dropdown-menu:hover {
@@ -152,12 +159,21 @@ li {
 }
 
 .dropdown-list {
-    font-size: 17px;
+    cursor: pointer;
+    font-size: 18px;
     color: #3e3c42;
 }
 
 .dropdown-list li {
     margin: 12px;
+}
+
+.dropdown-list li:first-child:hover {
+    color: #615aec;
+}
+
+.dropdown-list li.current-page {
+    opacity: 0.5;
 }
 
 .dropdown-list li:first-child::after {

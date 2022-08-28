@@ -1,30 +1,27 @@
-
-
-function signup() {
-    $.ajax({
-        type: "POST",
-        url: "/signup",
-        data: {
-            userid: user_id,
-            userpw: user_pw,
-            username: user_name,
-            usernickname: user_nickname
-        },
-        success: function (response) {
-
-            if (response['msg'] === '회원 가입 완료!'){
-                alert(response['msg'])
-                location.replace('/login')
-            }
-            else if (response['msg'] === '동일한 id가 존재합니다!') {
-                alert(response['msg'])
-                $('#member_id').val('')
-            }
-            else if (response['msg'] === '동일한 닉네임이 존재합니다!') {
-                alert(response['msg'])
-                $('#member_nickname').val('')
-            }
-
-        }
-    })
+const goToMain = () => {
+    document.location.href = '/';
 }
+
+const goToSokchoIntro = () => {
+    document.location.href = '/sokcho/intro';
+    // location.replace('/sokcho/intro');
+}
+
+const goToReviewList = () => {
+    document.location.href = '/post';
+}
+
+const dropdownMenu = document.querySelector(".dropdown-menu");
+const dropdownButton = document.querySelector(".dropdown-button");
+
+dropdownButton.addEventListener("click", function (event) {
+    if (this.active) {
+        dropdownMenu.classList.remove("active");
+    } else {
+        dropdownMenu.classList.add("active");
+    }
+
+    this.active = !this.active;
+});
+
+

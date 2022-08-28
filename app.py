@@ -53,7 +53,7 @@ def intro_sokcho():
             'link' : 'https://map.naver.com/v5/search/' + title + '/place'
         })
 
-    return render_template("/sokcho/intro.html", locationlist=locationlist)
+    return render_template("./sokcho/intro.html", locationlist=locationlist)
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
