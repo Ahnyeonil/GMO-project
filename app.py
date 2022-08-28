@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 # mongodb url 변경
 
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
 
 client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/?retryWrites=true&w=majority')
@@ -45,12 +46,12 @@ def intro_sokcho():
         for num in range(len(tags)):
             tag.append('#' + tags[num].text)
 
-        locationlist += [{
+        locationlist.append({
             'title' : title,
             'tag' : tag,
             'desc' : desc,
             'link' : 'https://map.naver.com/v5/search/' + title + '/place'
-        }]
+        })
 
     return render_template("/sokcho/intro.html", locationlist=locationlist)
 
@@ -155,6 +156,21 @@ def post():
 def detail():
     return render_template("gangneung/detail.html")
 
+@app.route("/temp/tempComment", methods=["POST", "GET"])
+def tempComment():
+    obj = '630945ebfb79ff41c5bbda70'
+#    db.comment.insert_one({'comment': '고고댓글3', 'nickname': '안철수3', 'password': '1234', 'posting': '630945ebfb79ff41c5bbda70'})
+    return render_template("temp/tempComment.html", obj = obj)
+
+@app.route("/tempHomework", methods=["GET"])
+def homework_get():
+
+    obj = request.values['obj']
+    fan_list = list(db.comment.find({'posting' : obj}))
+
+    for l in fan_list:
+        l['_id'] = str(l['_id'])
+    return jsonify({'fan_list' : fan_list})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
