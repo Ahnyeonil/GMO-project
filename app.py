@@ -53,7 +53,7 @@ def intro_sokcho():
             'link' : 'https://map.naver.com/v5/search/' + title + '/place'
         })
 
-    return render_template("/sokcho/intro.html", locationlist=locationlist)
+    return render_template("./sokcho/intro.html", locationlist=locationlist)
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
@@ -66,47 +66,81 @@ def post_sokcho():
     elif request.method == 'POST':
         return jsonify({'msg': '포스트 요청을 받았습니다.'})
 
-@app.route("/gangneung/intro", methods=["POST", "GET"])
-def intro_gangneung():
 
-    return render_template("gangneung/intro.html")
-
-@app.route("/gangneung/intro/list", methods=["GET"])
-def intro_gangneung_list():
-    # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
+@app.route("/gangneung/intro", methods=["GET"])
+def list_get():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/104.0.0.0 Safari/537.36'}
+
     data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-gangneung-things-to-do', headers=headers)
 
     soup = BeautifulSoup(data.text, 'html.parser')
 
-    locations = soup.select(
-        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > '
-        'div.listicle-item-wrap > div')
-    locationlist = []
+    sights = soup.select(
+        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > div.listicle-item-wrap > div')
 
-    for location in locations:
-        a = location.select_one('div > div.header-wrap > div.header-inner-wrap > h2')
-        b = location.select_one('div > div.content-wrap > div.description-wrap > p')
-        c = location.select_one('div > div.img-wrap > div > img')
-        if a is not None or b is not None or c is not None:
-            title = a.text
-            desc = b.text
-            image = c['data-lazy-src']
+    travleList = []
 
-            # print(title + '\n' + desc + '\n' + image + '\n')
-            # 반복문 돌아가며 딕셔너리 배열로 만들기
-            locationlist += [{
-                'title': title,
-                'desc': desc,
-                'image': image
-            }]
+    for sight in sights:
+        sight_title = sight.select_one('div > div.header-wrap > div.header-inner-wrap > h2').text
+        sight_desc = sight.select_one('div > div.content-wrap > div.description-wrap > p').text
+        sight_tags = sight.select('div > div.content-wrap > div.tag-container > ul > li')
 
-    # for i in locationlist:
-    #     print(i)
+        tags = []
 
-    return jsonify({'locations': locationlist})
+        for tag in sight_tags:
+            tags.append(tag.text)
+
+        travleList.append({
+            'title': sight_title,
+            'desc': sight_desc,
+            'tag': tags
+        })
+
+    return render_template("./gangneung/intro.html", travleList=travleList)
+
+# @app.route("/gangneung/intro", methods=["POST", "GET"])
+# def intro_gangneung():
+#
+#     return render_template("gangneung/intro.html")
+#
+# @app.route("/gangneung/intro/list", methods=["GET"])
+# def intro_gangneung_list():
+#     # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
+#     headers = {
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+#                       'Chrome/104.0.0.0 Safari/537.36'}
+#     data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-gangneung-things-to-do', headers=headers)
+#
+#     soup = BeautifulSoup(data.text, 'html.parser')
+#
+#     locations = soup.select(
+#         '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > '
+#         'div.listicle-item-wrap > div')
+#     locationlist = []
+#
+#     for location in locations:
+#         a = location.select_one('div > div.header-wrap > div.header-inner-wrap > h2')
+#         b = location.select_one('div > div.content-wrap > div.description-wrap > p')
+#         c = location.select_one('div > div.img-wrap > div > img')
+#         if a is not None or b is not None or c is not None:
+#             title = a.text
+#             desc = b.text
+#             image = c['data-lazy-src']
+#
+#             # print(title + '\n' + desc + '\n' + image + '\n')
+#             # 반복문 돌아가며 딕셔너리 배열로 만들기
+#             locationlist += [{
+#                 'title': title,
+#                 'desc': desc,
+#                 'image': image
+#             }]
+#
+#     # for i in locationlist:
+#     #     print(i)
+#
+#     return jsonify({'locations': locationlist})
 
 @app.route("/post", methods=["POST", "GET"])
 def post():
@@ -173,4 +207,4 @@ def homework_get():
     return jsonify({'fan_list' : fan_list})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)
