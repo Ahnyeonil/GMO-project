@@ -1,15 +1,103 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../../static/scripts.js"></script>
-  <link rel="stylesheet" href="../../static/intro/style.css">
-  <title>G.M.O</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>G.M.O</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../static/gangneung/intro/style.css"/>
+    <link rel="stylesheet" href="../../static/gangneung/intro/grid.min.css"/>
+    <!-- Google Web Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
 </head>
 <body>
-    강릉 여행지 소개 페이지 입니다
+<div class="tour">
+    <!-- Travel Header Part -->
+    <header class="tour-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- nav -->
+                    <nav class="tour-nav">
+                        <h1 class="sr-only">Global Navigation Menu</h1>
+                        <h1 class="tour-header__logo">
+                            <a href="#">
+                                G.M.O
+                            </a>
+                        </h1>
+                        <div class="tour-meun-list">
+                            <div class="button-group">
+                                <button onclick="hi()" class="fill-button">Region</button>
+                                <a href="" class="fill-button inverted">Review</a>
+                            </div>
+                            <div class="dropdown-menu">
+                                <ul class="dropdown-list">
+                                    <li>
+                                        <a href="#">강릉</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">속초</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Travel Content Part -->
+    <section class="tour-content">
+        <h1 class="sr-only">Main image</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Gangneung Image & Name Part -->
+                    <div
+                            class="tour-content__desc"
+                            area-label="A picture of Gangneung sea"
+                    >
+                        <h1 class="tour-content__title">Gangneung</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Travel List Part -->
+    <section class="tour-list">
+        <h1 class="sr-only">tourist list</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% for i in travleList %}
+                    <article class="tourist-attraction">
+                        <h1
+                                area-lable="Tourist attraction title"
+                                class="tourist-attraction__title"
+                        >
+                            {{ i['title'] }}
+                        </h1>
+                        <ul area-lable="Hashtag" class="tourist-attraction__taglist">
+                            <li>{% for t in i['tag'] %} #{{ t }} {% endfor %}</li>
+                        </ul>
+                        <p
+                                area-lable="Tourist attraction Description"
+                                class="tourist-attraction__desc"
+                        >
+                            {{ i['desc'] }}
+                        </p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>
