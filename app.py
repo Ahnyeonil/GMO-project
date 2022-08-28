@@ -99,9 +99,6 @@ def list_get():
 
     return render_template("./gangneung/intro.html", travleList=travleList)
 
-
-
-
 # @app.route("/gangneung/intro", methods=["POST", "GET"])
 # def intro_gangneung():
 #
