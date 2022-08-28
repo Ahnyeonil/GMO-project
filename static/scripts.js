@@ -50,21 +50,24 @@ function post_list_call() {
 
                 let temp_html = `<li class="card-item">
                                    <div class="card">
-                                     <div class="card-image"><img src="../../static/images/${file}"></div>
+                                     <div class="card-image"><img class="object-fix" src="../../static/images/${file}" alt="사진"></div>
                                      <div class="card_content">
                                        <h2 class="card_title">${title}</h2>
                                        <p class="card_text">${desc}</p>
-                                       <a><button class="btn card_btn" onclick="detail_list_call('${title}')">Read More</button></a>
+                                       <a href="#detail-popup"><button class="btn card_btn" onclick="detail_list_call('${title}')">Read More</button></a>
                                      </div>
                                    </div>
                                  </li>`
 
                 $('.cards').append(temp_html)
+                // let cardimg = document.querySelector('.card-image')
+                // cardimg.style.backgroundImage = `url("../../static/images/${file}")`
+
             }
         }
     })
 }
-
+ // style="background-image: src(../../static/images/${file})"
 function detail_list_call(title) {
 
     // let title = $('.card_title').val()
@@ -76,20 +79,36 @@ function detail_list_call(title) {
         data: {titlename: title},
         success: function (response) {
 
-            // console.log(response)
-
             if(response['postdetail'] === undefined)
                 alert(response['msg'])
 
             let postdetail = response['postdetail']
 
-            console.log(postdetail)
-            //
-            //
-            //     let temp_html = ``
-            //
-            //     $('').append(temp_html)
-            // }
+            let file = postdetail['file']
+            let title = postdetail['title']
+            let desc = postdetail['desc']
+            let writerid = postdetail['writerid']
+            let star = postdetail['star']
+            let star_img = '⭐'.repeat(star)
+
+            let temp_html = `<li class="detailcard-item">
+                                   <div class="detailcard">
+                                     <div class="detailcard-image"><img src="../../static/images/${file}" alt="사진"></div>
+                                     <div class="detailcard_content">
+                                       <h2 class="detailcard_title">장소 : ${title}</h2>
+                                       <p class="detailcard_text">설명 : ${desc}</p>
+                                       <p class="detailcard_text">평점 : ${star_img}</p>
+                                       <p class="detailcard_text">작성자 : ${writerid}</p>
+                                     </div>
+                                   </div>
+                                 </li>`
+
+            let detail_post = $('.detail-posting')
+
+            detail_post.empty()
+            detail_post.append(temp_html)
+            $('#detail-popup').attr("opacity", "1");
+
         }
     })
 }
