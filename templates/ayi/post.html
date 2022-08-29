@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +27,13 @@
             }
         }
 
-        function goPost(){
-            location.href = '/ayi/post'
+        function goIntro(){
+            location.href = '/sokcho/intro'
+        }
+
+        function goDetail(_id) {
+            alert("goDetail")
+            alert(_id)
         }
     </script>
 </head>
@@ -36,34 +41,30 @@
     <header>
         <div class="d-flex justify-content-around">
             <button type="button" class="btn btn-primary" onclick="goMain();">홈</button>
-            <div class="row">
+            <div>
                 <select class="form-select form-control" style="width:auto;" id="select_" name="select_" onchange="changeArea();">
                     <option value="0" selected>지역 선택</option>
                     <option value="1">속초</option>
                     <option value="2">강릉</option>
                 </select>
-                <button type="button" class="btn btn-secondary" onclick="goPost();">리뷰</button>
+                <button type="button" class="btn btn-secondary" onclick="goIntro();">소개페이지</button>
             </div>
         </div>
     </header>
-    <div class="card" style="height: 500px;">
-        <img src="../../static/images/sokcho_img.webp" class="card-img-top" alt="sokcho" style="width: 100%; height: 100%">
-    </div>
     <div class="container">
-        {% for i in locationlist %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ i['title'] }}</h5>
-                    <p class="card-text">{{ i['desc'] }}</p>
+        <div class="row">
+            {% for p in postinglist %}
+                <div class="col-sm-4">
+                    <a href="#" onclick="goDetail(\"{{ p['_id']}}\")">
+                        <img src="{{ p['file'] }}" class="card-img-top" alt="{{p['title'] }}" style="width: 100%; height: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p['title'] }}</h5>
+                            <p class="card-text">{{ p['desc'] }}</p>
+                        </div>
+                    </a>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#" style="text-decoration: none">{% for t in i['tag'] %} {{ t }} {% endfor %}</a></li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{ i['link'] }}" class="card-link" target='_blank'>장소이동</a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
