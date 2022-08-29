@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 # mongodb url 변경
 
+from bson.objectid import ObjectId
 from pymongo import MongoClient
 
 client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/?retryWrites=true&w=majority')
@@ -252,6 +253,14 @@ def post_ayi():
         p['_id'] = str(p['_id'])
 
     return render_template("ayi/post.html", postinglist = postinglist)
+
+@app.route("/ayi/detail", methods=["GET"])
+def detail_ayi():
+    obj = request.values['_id']
+
+    posting = db.posting.find_one({'_id' : ObjectId(obj)})
+
+    return render_template("ayi/detail.html", posting = posting)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

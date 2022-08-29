@@ -14,6 +14,21 @@
             crossorigin="anonymous"></script>
     <title>G.M.O</title>
     <script>
+
+        window.onload = function (){
+
+            let elements = document.getElementsByClassName("go-detail");
+
+            let myFunction = function() {
+                let _id = this.getAttribute("data-pid");
+                location.href = '/ayi/detail?_id=' + _id
+            };
+
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('click', myFunction, false);
+            }
+        }
+
         function goMain(){
             location.href = '/'
         }
@@ -29,11 +44,6 @@
 
         function goIntro(){
             location.href = '/sokcho/intro'
-        }
-
-        function goDetail(_id) {
-            alert("goDetail")
-            alert(_id)
         }
     </script>
 </head>
@@ -55,13 +65,12 @@
         <div class="row">
             {% for p in postinglist %}
                 <div class="col-sm-4">
-                    <div style=" cursor: pointer;" onclick="goDetail(\"{{ p['_id']}}\")">
-                        <img src="{{ p['file'] }}" class="card-img-top" alt="{{p['title'] }}" style="width: 100%; height: 100%">
+                    <div style="cursor: pointer;" class="go-detail" data-pid="{{ p['_id']}}">
                         <div class="card-body">
                             <h5 class="card-title">{{ p['title'] }}</h5>
                             <p class="card-text">{{ p['desc'] }}</p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             {% endfor %}
         </div>
