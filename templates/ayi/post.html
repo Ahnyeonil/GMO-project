@@ -55,7 +55,7 @@
         <div class="row">
             {% for p in postinglist %}
                 <div class="col-sm-4">
-                    <a href="#" onclick="goDetail(\"{{ p['_id']}}\")">
+                    <div style=" cursor: pointer;" onclick="goDetail(\"{{ p['_id']}}\")">
                         <img src="{{ p['file'] }}" class="card-img-top" alt="{{p['title'] }}" style="width: 100%; height: 100%">
                         <div class="card-body">
                             <h5 class="card-title">{{ p['title'] }}</h5>
