@@ -13,13 +13,38 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <title>G.M.O</title>
+    <script>
+        function goMain(){
+            location.href = '/'
+        }
+
+        function changeArea(){
+
+            if($('#select_').val() == '1'){
+                location.reload()
+            } else if($('#select_').val() == '2'){
+                location.href = '/gangneung/intro'
+            }
+        }
+
+        function goPost(){
+            location.href = '/ayi/post'
+        }
+    </script>
 </head>
 <body>
     <header>
-        <button type="button" class="btn btn-primary">홈</button>
-        <select>
-
-        </select>
+        <div class="d-flex justify-content-around">
+            <button type="button" class="btn btn-primary" onclick="goMain();">홈</button>
+            <div class="row">
+                <select class="form-select form-control" style="width:auto;" id="select_" name="select_" onchange="changeArea();">
+                    <option value="0" selected>지역 선택</option>
+                    <option value="1">속초</option>
+                    <option value="2">강릉</option>
+                </select>
+                <button type="button" class="btn btn-secondary" onclick="goPost();">리뷰</button>
+            </div>
+        </div>
     </header>
     <div class="card" style="height: 500px;">
         <img src="../../static/images/sokcho_img.webp" class="card-img-top" alt="sokcho" style="width: 100%; height: 100%">
