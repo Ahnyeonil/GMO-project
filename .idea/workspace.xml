@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="포스팅에 들어가게 이미지 뿌려주기 (css object-fit)">
-      <change afterPath="$PROJECT_DIR$/static/gangneung/intro/styles/grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/gangneung/intro/styles/style.css" afterDir="false" />
+    <list default="true" id="35686e94-fb8b-4bfd-adac-deba16bbe92e" name="변경" comment="완성인데 완성아닌 완성">
+      <change afterPath="$PROJECT_DIR$/static/gangneung/intro/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/detail/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/detail/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/post/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/post/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gangneung/intro/styles/grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/gangneung/intro/styles/grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/gangneung/intro/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/gangneung/intro/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gangneung/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gangneung/intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/intro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gangneung/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,18 +64,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/project/GMO-project/templates&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/project/GMO-project/templates",
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\project\GMO-project\templates" />
@@ -295,7 +292,8 @@
       <workItem from="1661598971767" duration="5390000" />
       <workItem from="1661604413024" duration="3550000" />
       <workItem from="1661701581775" duration="10241000" />
-      <workItem from="1661856993080" duration="19662000" />
+      <workItem from="1661856993080" duration="20246000" />
+      <workItem from="1661877741632" duration="81000" />
     </task>
     <task id="LOCAL-00001" summary="kyt test">
       <created>1661503800107</created>
@@ -360,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661710770772</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="완성인데 완성아닌 완성">
+      <created>1661876905565</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1661876905565</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,6 +383,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="kyt test" />
     <MESSAGE value="url_mapping &amp; basic_static_file" />
     <MESSAGE value="포스팅 기능 구현" />
@@ -387,11 +393,12 @@
     <MESSAGE value="down용" />
     <MESSAGE value="Detail comment를 제외한 서버 기능 구현 완료" />
     <MESSAGE value="포스팅에 들어가게 이미지 뿌려주기 (css object-fit)" />
-    <option name="LAST_COMMIT_MESSAGE" value="포스팅에 들어가게 이미지 뿌려주기 (css object-fit)" />
+    <MESSAGE value="완성인데 완성아닌 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="완성인데 완성아닌 완성" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1661536796233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661876287652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661877763765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
