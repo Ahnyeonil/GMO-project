@@ -1,33 +1,109 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/scripts.js"></script>
-    <link rel="stylesheet" href="../../static/detail/style.css">
-    <title>G.M.O</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../static/scripts.js"></script>
+  <link rel="stylesheet" href="../../static/detail/style.css">
+  <title>G.M.O</title>
+</head>
+<body>
+  <!-- nav bar 시작 -->
+  <nav class="navbar">
+    <a href="/" class="logo">G.M.O</a>
+    <ul class="main-nav">
+      <li><a href="#" class="nav-links">Menu1</a></li>
+      <li><a href="#" class="nav-links">Menu2</a></li>
+      <li><a href="#" class="nav-links">Menu3</a></li>
+      <li><a href="#" class="nav-links">Menu4</a></li>
+    </ul>
+  </nav>
+  <!-- nav bar 끝 -->
 
-    <!-- nav bar 시작 -->
-    <nav class="navbar">
-      <a href="/" class="logo">G.M.O</a>
-      <ul class="main-nav">
-        <li><a href="#" class="nav-links">Menu1</a></li>
-        <li><a href="#" class="nav-links">Menu2</a></li>
-        <li><a href="#" class="nav-links">Menu3</a></li>
-        <li><a href="#" class="nav-links">Menu4</a></li>
-      </ul>
-    </nav>
-    <!-- nav bar 끝 -->
 
+  <main>
     <div class="list">
-      게시물 리스트
+      <ul class="cards">
+        {% for i in postlist %}
+        {% set title = i['title'] %}
+        {% set file = i['file'] %}
+        {% set desc = i['desc'] %}
+        {% set id = i['_id'] %}
+        <li class="card-item">
+          <div class="card">
+              <div class="card-image"><img alt="사진" src="../../static/images/{{file}}"></div>
+            <div class="card_content">
+              <h2 class="card_title">{{title}}</h2>
+              <p class="card_text">{{desc}}</p>
+
+              <a><button class="btn card_btn" onclick="detail_list_call('{{id}}')">Read More</button></a>
+              <input name="hiddenid" type="hidden" value="{{id}}" />
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+
+      </ul>
     </div>
+
+    <!-- detail post -->
+
     <div class="content">
-      본문
+      <div class="detail-post">
+        <img src="../../static/images/{{postlist[0]['file']}}">
+        <div class="content-title">
+          <h2>{{postlist[0]['title']}}</h2>
+          <span class="star-rate">{{(postlist[0]['star'] * '⭐')}}</span>
+          <p>{{postlist[0]['desc']}}</p>
+          <p>{{postlist[0]['writerid']}}</p>
+        </div>
+      </div>
+
+    <!-- /detail post -->
+
+
+      <div class="comment-head">
+        <span> 댓글 {n}개</span>
+      </div>
+
+      <!-- comment post -->
+      <form method="post">
+        <div class="post-comment">
+          <span>댓글달기</span>
+          <div class="comment-comment">
+            <input placeholder="Add Comment..." name="comment" type="text" required="">
+          </div>
+          <div class="comment-profile">
+            <input placeholder="Author" name="author" type="text" required="">
+            <input placeholder="Password" name="password" type="password" required="">
+          </div>
+          <input class="hiddenid" type="hidden" name="postingid" value="{{postlist[0]['_id']}}"/>
+          <div>
+            <button type="submit">나도 한 마디</button>
+          </div>
+        </div>
+      </form>
+      <!-- comment post -->
+
+      <div class="comments">
+
+        {% for i in commentlist %}
+        {% set nickname = i['nickname'] %}
+        {% set comment = i['comment'] %}
+        {% set password = i['password'] %}
+        {% set posting = i['posting'] %}
+        <div class="comment">
+          <h4 class="comment-author">{{nickname}}</h4>
+          <p>{{comment}}</p>
+          <a href="#" class="close">&times;</a>
+        </div>
+        {% endfor %}
+
+      </div>
+
     </div>
-  </body>
+  </main>
+</body>
 </html>

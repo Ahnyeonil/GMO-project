@@ -54,28 +54,90 @@ function post_list_call() {
                                      <div class="card_content">
                                        <h2 class="card_title">${title}</h2>
                                        <p class="card_text">${desc}</p>
-                                       <a href="#detail-popup"><button class="btn card_btn" onclick="detail_list_call('${title}')">Read More</button></a>
+                                       <a href="#detail-popup"><button class="btn card_btn" onclick="simple_detail_call('${title}')">Read More</button></a>
+<!--                                       <a href="/detail"><button class="btn card_btn">Read More</button></a>-->
                                      </div>
                                    </div>
                                  </li>`
 
                 $('.cards').append(temp_html)
-                // let cardimg = document.querySelector('.card-image')
-                // cardimg.style.backgroundImage = `url("../../static/images/${file}")`
 
             }
         }
     })
 }
- // style="background-image: src(../../static/images/${file})"
-function detail_list_call(title) {
 
-    // let title = $('.card_title').val()
-    // console.log(title)
+function detail_list_call(id) {
 
     $.ajax({
         type: "POST",
         url: "/detail/list",
+        data: {idstr: id},
+        success: function (response) {
+
+            console.log(response)
+
+            let hiddenid = response['hiddenid']
+            $('.hiddenid').val(hiddenid)
+
+            // postdetail
+            let postdetail = response['postdetail']
+
+            let file = postdetail['file']
+            let title = postdetail['title']
+            let desc = postdetail['desc']
+            let writerid = postdetail['writerid']
+            let star = postdetail['star']
+            let star_img = '⭐'.repeat(star)
+
+            let temp_html = `<img src="../../static/images/${file}">
+                                <div class="content-title">
+                                  <h2>${title}</h2>
+                                  <span class="star-rate">${star_img}</span>
+                                  <p>${desc}</p>
+                                  <p>${writerid}</p>
+                                </div>`
+
+
+            let detail_post = $('.detail-post')
+
+            detail_post.empty()
+            detail_post.append(temp_html)
+
+
+            // comment
+            let comments = response['comments']
+            let commentlist = $('.comments')
+
+            commentlist.empty()
+
+            for (let i = 0; i < comments.length; i++) {
+
+                let comment = comments[i]['comment']
+                let nickname = comments[i]['nickname']
+                let password = comments[i]['password']
+                let posting = comments[i]['posting']
+
+                let temp_html = `<div class="comment">
+                                  <h4 class="comment-author">${nickname}</h4>
+                                  <p>${comment}</p>
+                                  <a href="#" class="close">&times;</a>
+                                </div>`
+
+
+                commentlist.append(temp_html)
+
+            }
+
+        }
+    })
+}
+
+function simple_detail_call(title) {
+
+    $.ajax({
+        type: "POST",
+        url: "/post/simpledetail",
         data: {titlename: title},
         success: function (response) {
 
@@ -112,3 +174,32 @@ function detail_list_call(title) {
         }
     })
 }
+
+
+// 지영님 js
+
+const goToMain = () => {
+    document.location.href = '/';
+}
+
+const goToSokchoIntro = () => {
+    document.location.href = '/sokcho/intro';
+    // location.replace('/sokcho/intro');
+}
+
+const goToReviewList = () => {
+    document.location.href = '/post';
+}
+
+const dropdownMenu = document.querySelector(".dropdown-menu");
+const dropdownButton = document.querySelector(".dropdown-button");
+
+dropdownButton.addEventListener("click", function (event) {
+    if (this.active) {
+        dropdownMenu.classList.remove("active");
+    } else {
+        dropdownMenu.classList.add("active");
+    }
+
+    this.active = !this.active;
+});

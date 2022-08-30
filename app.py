@@ -4,6 +4,7 @@ import random
 import string
 import requests
 from bs4 import BeautifulSoup
+from bson import ObjectId
 
 from flask import Flask, render_template, request, jsonify, redirect, session
 
@@ -27,45 +28,75 @@ def home():
 @app.route("/gangneung/intro", methods=["POST", "GET"])
 def intro_gangneung():
 
-    return render_template("gangneung/intro.html")
-
-
-@app.route("/gangneung/intro/list", methods=["GET"])
-def intro_gangneung_list_send():
-    # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/104.0.0.0 Safari/537.36'}
+
     data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-gangneung-things-to-do', headers=headers)
 
     soup = BeautifulSoup(data.text, 'html.parser')
 
-    locations = soup.select(
-        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > '
-        'div.listicle-item-wrap > div')
-    locationlist = []
+    sights = soup.select(
+        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > div.listicle-item-wrap > div')
 
-    for location in locations:
-        a = location.select_one('div > div.header-wrap > div.header-inner-wrap > h2')
-        b = location.select_one('div > div.content-wrap > div.description-wrap > p')
-        c = location.select_one('div > div.img-wrap > div > img')
-        if a is not None or b is not None or c is not None:
-            title = a.text
-            desc = b.text
-            image = c['data-lazy-src']
+    travleList = []
 
-            # print(title + '\n' + desc + '\n' + image + '\n')
-            # 반복문 돌려가며 딕셔너리 배열로 만들기
-            locationlist += [{
-                'title': title,
-                'desc': desc,
-                'image': image
-            }]
+    for sight in sights:
+        sight_title = sight.select_one('div > div.header-wrap > div.header-inner-wrap > h2').text
+        sight_desc = sight.select_one('div > div.content-wrap > div.description-wrap > p').text
+        sight_tags = sight.select('div > div.content-wrap > div.tag-container > ul > li')
 
-    # for i in locationlist:
-    #     print(i)
+        tags = []
 
-    return jsonify({'locations': locationlist})
+        for tag in sight_tags:
+            tags.append(tag.text)
+
+        travleList.append({
+            'title': sight_title,
+            'desc': sight_desc,
+            'tag': tags
+        })
+
+    return render_template("./gangneung/intro.html", travleList=travleList)
+
+
+# @app.route("/gangneung/intro/list", methods=["GET"])
+# def intro_gangneung_list_send():
+
+    # # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
+    # headers = {
+    #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+    #                   'Chrome/104.0.0.0 Safari/537.36'}
+    # data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-gangneung-things-to-do', headers=headers)
+    #
+    # soup = BeautifulSoup(data.text, 'html.parser')
+    #
+    # locations = soup.select(
+    #     '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > '
+    #     'div.listicle-item-wrap > div')
+    # locationlist = []
+    #
+    # for location in locations:
+    #     a = location.select_one('div > div.header-wrap > div.header-inner-wrap > h2')
+    #     b = location.select_one('div > div.content-wrap > div.description-wrap > p')
+    #     c = location.select_one('div > div.img-wrap > div > img')
+    #     if a is not None or b is not None or c is not None:
+    #         title = a.text
+    #         desc = b.text
+    #         image = c['data-lazy-src']
+    #
+    #         # print(title + '\n' + desc + '\n' + image + '\n')
+    #         # 반복문 돌려가며 딕셔너리 배열로 만들기
+    #         locationlist += [{
+    #             'title': title,
+    #             'desc': desc,
+    #             'image': image
+    #         }]
+    #
+    # # for i in locationlist:
+    # #     print(i)
+    #
+    # return jsonify({'locations': locationlist})
 
 
 @app.route("/post", methods=["POST", "GET"])
@@ -117,32 +148,63 @@ def post():
 
 @app.route("/post/list", methods=["POST", "GET"])
 def post_list_send():
-
     all_post = list(db.posting.find({}, {'_id': False}))
     # print(all_post)
 
     return jsonify({'posts': all_post})
 
 
+@app.route("/post/simpledetail", methods=["POST", "GET"])
+def post_simpledetail_send():
+    if request.method == 'POST':
+        title_receive = request.form['titlename']
+        titlepost = db.posting.find_one({'title': title_receive}, {'_id': False})
+
+    return jsonify({'postdetail': titlepost})
+
+
 @app.route("/detail", methods=["POST", "GET"])
 def detail():
+    if request.method == 'POST':
+        comment_receive = request.form['comment']
+        author_receive = request.form['author']
+        password_receive = request.form['password']
+        postingid_receive = request.form['postingid']
 
-    return render_template("gangneung/detail.html")
+        print(comment_receive, author_receive, password_receive, postingid_receive)
+
+        doc = {
+            'comment': comment_receive,
+            'nickname': author_receive,
+            'password': password_receive,
+            'posting': postingid_receive,
+        }
+
+        db.comment.insert_one(doc)
+
+    all_post = list(db.posting.find())
+
+    for a in all_post:
+        a['_id'] = str(a['_id'])
+
+    id_receive = '63087d427b262f1057c5bbae'
+    default_comment = list(db.comment.find({'posting': id_receive}, {'_id': False}))
+    print(default_comment)
+
+    return render_template("gangneung/detail.html", postlist=all_post, commentlist=default_comment)
 
 
 @app.route("/detail/list", methods=["POST", "GET"])
 def detail_list_send():
-
     if request.method == 'POST':
-        titlename_receive = request.form['titlename']
-        userfind = db.posting.find_one({'title': titlename_receive}, {'_id': False})
+        id_receive = request.form['idstr']
 
-        print("찾아 낸 document : ", userfind)
+        postingfind = db.posting.find_one({'_id': ObjectId(id_receive)})
+        postingfind['_id'] = str(postingfind['_id'])
 
-        if userfind is None:
-            return jsonify({'msg': '제목으로 상세 페이지를 찾을 수 없습니다'})
+        commentfind = list(db.comment.find({'posting': id_receive}, {'_id': False}))
 
-        return jsonify({'postdetail': userfind})
+        return jsonify({'postdetail': postingfind, 'comments': commentfind, 'hiddenid': id_receive})
 
 
 if __name__ == '__main__':
