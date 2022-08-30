@@ -115,8 +115,8 @@ function detail_list_call(id) {
 
                 let comment = comments[i]['comment']
                 let nickname = comments[i]['nickname']
-                let password = comments[i]['password']
-                let posting = comments[i]['posting']
+                // let password = comments[i]['password']
+                // let posting = comments[i]['posting']
 
                 let temp_html = `<div class="comment">
                                   <h4 class="comment-author">${nickname}</h4>
