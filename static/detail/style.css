@@ -65,16 +65,237 @@ a {
 }
 /* nav 끝 */
 
+main {
+  display: flex;
+}
+
 .list {
-  background-color: rgba(0,0,0,0.5);
-  float: left;
-  width: 20%;
-  height: 100vh;
+  order: 1;
+  width: 25%;
+  min-width: 25%;
+  overflow: scroll;
+  height: 180vh;
+  background: rgba(0,0,0,0.3);
+  background-blend-mode: multiply;
+  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+  /* margin-top: -9999px;
+  margin-bottom: -9999px;
+  padding-top: 9999px;
+  padding-bottom: 9999px; */
+}
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .content {
-  background-color: aquamarine;
+  float: right;
+  order: 2;
   float: left;
-  width: 80%;
-  height: 100vh;
+  width: 75%;
+  background: whitesmoke;
+  min-height: 100vh;
 }
+
+
+/* 게시물 리스트 시작 */
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+img {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+
+.btn {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.post-btn-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 125px;
+}
+.post-btn {
+  width: 150px;
+  height: 45px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 2.5px;
+  font-weight: bold;
+}
+.post-btn:hover {
+  background-color: #FFF;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.5);
+  transform: translateY(-7px);
+  color: #000;
+}
+
+.cards {
+  display: grid;
+  place-items: center;
+  list-style: none;
+  margin-left: -40px;
+}
+
+.card-item {
+  display: flex;
+  padding: 0.3rem;
+}
+
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 350px;
+  height: 350px;
+  margin: 0 0 40px 40px
+}
+
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+}
+
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 2.25rem;
+  font-weight: 400;
+}
+
+.card-image {
+  display: block;
+  overflow: hidden;
+  object-fit: cover;
+  max-height: 200px;
+  height: auto;
+  width: 100%;
+
+}
+/* 게시물 리스트 끝 */
+
+/* 본문 시작 */
+
+.content img {
+  padding: 50px;
+}
+
+.content-title {
+  padding: 50px;
+  border-bottom: 3px solid #000000a9;
+}
+
+.star-rate {
+  color: #fc0;
+  font-size: 42px;
+}
+
+.comment-head {
+  padding: 30px 20px 30px 50px;
+  background-color: rgba(213, 217, 221, 0.795);
+}
+.post-comment {
+  margin: 10px 50px 15px 50px;
+  padding: 30px 10px 30px 50px;
+  background-color: rgb(238, 238, 238);
+}
+
+.post-comment span {
+  margin-left: 15px;
+}
+
+.post-comment button {
+  margin-left: 15px;
+  width: 10%;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 1px;
+  padding: 10px 5px;
+  background: #27ae60;
+  font-weight: bold;
+}
+.post-comment button:hover, .post-comment button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
+}
+
+.comments {
+  background-color: whitesmoke;
+  overflow: scroll;
+  height: 60vh;
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  margin: 10px 50px 15px 50px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  border-bottom: 1px solid #0000001e;
+}
+
+.comment-comment input {
+  width: 70%;
+  height: 3rem;
+  margin: 15px;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+.comment-profile {
+  width: 60%;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.comment-profile input {
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+/* 본문 끝 */

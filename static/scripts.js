@@ -1,30 +1,177 @@
-function signup() {
+function gangneung_list_call() {
     $.ajax({
-        type: "POST",
-        url: "/signup",
-        data: {
-            userid: user_id,
-            userpw: user_pw,
-            username: user_name,
-            usernickname: user_nickname
-        },
+        type: "GET",
+        url: "/gangneung/intro/list",
+        data: {},
         success: function (response) {
 
-            if (response['msg'] === '회원 가입 완료!'){
-                alert(response['msg'])
-                location.replace('/login')
+            let locations = response['locations']
+
+                for (let i = 0; i < locations.length; i++) {
+                    let title = locations[i]['title']
+                    let desc = locations[i]['desc']
+                    let img = locations[i]['image']
+
+                    let temp_html = `<div class="col">
+                                        <div class="card h-100">
+                                            <img src=${img}
+                                                 class="card-img-top">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${title}</h5>
+                                                <p class="card-text">${desc}</p>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+                    $('#cards-box').append(temp_html)
+                }
+        }
+    })
+}
+
+function post_list_call() {
+
+    $.ajax({
+        type: "GET",
+        url: "/post/list",
+        data: {},
+        success: function (response) {
+
+            let posts = response['posts']
+
+            for (let i = 0; i < posts.length; i++) {
+                let title = posts[i]['title']
+                let desc = posts[i]['desc']
+                // let writerid = posts[i]['writerid']
+                // let star = posts[i]['star']
+                let file = posts[i]['file']
+
+                let temp_html = `<li class="card-item">
+                                   <div class="card">
+                                     <div class="card-image"><img class="object-fix" src="../../static/images/${file}" alt="사진"></div>
+                                     <div class="card_content">
+                                       <h2 class="card_title">${title}</h2>
+                                       <p class="card_text">${desc}</p>
+                                       <a href="#detail-popup"><button class="btn card_btn" onclick="simple_detail_call('${title}')">Read More</button></a>
+<!--                                       <a href="/detail"><button class="btn card_btn">Read More</button></a>-->
+                                     </div>
+                                   </div>
+                                 </li>`
+
+                $('.cards').append(temp_html)
+
             }
-            else if (response['msg'] === '동일한 id가 존재합니다!') {
-                alert(response['msg'])
-                $('#member_id').val('')
-            }
-            else if (response['msg'] === '동일한 닉네임이 존재합니다!') {
-                alert(response['msg'])
-                $('#member_nickname').val('')
+        }
+    })
+}
+
+function detail_list_call(id) {
+
+    $.ajax({
+        type: "POST",
+        url: "/detail/list",
+        data: {idstr: id},
+        success: function (response) {
+
+            console.log(response)
+
+            let hiddenid = response['hiddenid']
+            $('.hiddenid').val(hiddenid)
+
+            // postdetail
+            let postdetail = response['postdetail']
+
+            let file = postdetail['file']
+            let title = postdetail['title']
+            let desc = postdetail['desc']
+            let writerid = postdetail['writerid']
+            let star = postdetail['star']
+            let star_img = '⭐'.repeat(star)
+
+            let temp_html = `<img src="../../static/images/${file}">
+                                <div class="content-title">
+                                  <h2>${title}</h2>
+                                  <span class="star-rate">${star_img}</span>
+                                  <p>${desc}</p>
+                                  <p>${writerid}</p>
+                                </div>`
+
+
+            let detail_post = $('.detail-post')
+
+            detail_post.empty()
+            detail_post.append(temp_html)
+
+
+            // comment
+            let comments = response['comments']
+            let commentlist = $('.comments')
+
+            commentlist.empty()
+
+            for (let i = 0; i < comments.length; i++) {
+
+                let comment = comments[i]['comment']
+                let nickname = comments[i]['nickname']
+                // let password = comments[i]['password']
+                // let posting = comments[i]['posting']
+
+                let temp_html = `<div class="comment">
+                                  <h4 class="comment-author">${nickname}</h4>
+                                  <p>${comment}</p>
+                                  <a href="#" class="close">&times;</a>
+                                </div>`
+
+
+                commentlist.append(temp_html)
+
             }
 
         }
     })
+}
+
+function simple_detail_call(title) {
+
+    $.ajax({
+        type: "POST",
+        url: "/post/simpledetail",
+        data: {titlename: title},
+        success: function (response) {
+
+            if(response['postdetail'] === undefined)
+                alert(response['msg'])
+
+            let postdetail = response['postdetail']
+
+            let file = postdetail['file']
+            let title = postdetail['title']
+            let desc = postdetail['desc']
+            let writerid = postdetail['writerid']
+            let star = postdetail['star']
+            let star_img = '⭐'.repeat(star)
+
+            let temp_html = `<li class="detailcard-item">
+                                   <div class="detailcard">
+                                     <div class="detailcard-image"><img src="../../static/images/${file}" alt="사진"></div>
+                                     <div class="detailcard_content">
+                                       <h2 class="detailcard_title">장소 : ${title}</h2>
+                                       <p class="detailcard_text">설명 : ${desc}</p>
+                                       <p class="detailcard_text">평점 : ${star_img}</p>
+                                       <p class="detailcard_text">작성자 : ${writerid}</p>
+                                     </div>
+                                   </div>
+                                 </li>`
+
+            let detail_post = $('.detail-posting')
+
+            detail_post.empty()
+            detail_post.append(temp_html)
+            $('#detail-popup').attr("opacity", "1");
+
+        }
+    })
+}
 
 // 포스팅-속초
 function save_post_sc() {
