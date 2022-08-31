@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <title>강원도(속초) 포스팅</title>
+
+    <style>
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
+        .mypic {
+            width: 100%;
+            height: 200px;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1601024445121-e5b82f020549?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mypic > h1 {
+            font-size: 30px;
+        }
+
+        .mybox {
+            width: 95%;
+            max-width: 700px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px lightblue;
+            margin: 20px auto;
+        }
+
+        .mybucket {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mybucket > input {
+            width: 70%;
+        }
+
+        .mybox > li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 10px;
+            min-height: 48px;
+        }
+
+        .mybox > li > h2 {
+            max-width: 75%;
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: auto;
+            margin-bottom: 0px;
+        }
+
+        .mybox > li > h2.done {
+            text-decoration: line-through
+        }
+
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+        }
+
+        #picture{
+            height: 400px;
+        }
+
+    </style>
+    <script>
+        // $(document).ready(function () {
+        //     show_posting();
+        // });
+        //
+        // function show_posting() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/posting",
+        //         data: {},
+        //         success: function (response) {
+        //             alert(response["msg"])
+        //         }
+        //     });
+        // }
+
+        function save_posting() {
+            let picture = $('#picture').val()
+            let name = $('#name').val()
+            let title = $('#title').val()
+            let star = $('#star').val()
+            let comment = $('#comment').val()
+
+            console.log(name)
+
+            $.ajax({
+                type: "POST",
+                url: "/posting",
+                data: { picture_give:picture, name_give:name, title_give:title, star_give:star, comment_give:comment },
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+        function done_posting(num) {
+            $.ajax({
+                type: "POST",
+                url: "/posting/done",
+                data: {sameple_give: '데이터전송'},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            });
+        }
+
+        function close_posting(){
+            window.close()
+        }
+    </script>
+</head>
+<body>
+<div class="mypic">
+    <h1>속초 포스팅하기</h1>
+</div>
+
+<FORM >
+
+</FORM>
+<div class="mypost">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="picture" placeholder="name@example.com">
+        <label for="floatingInput">사진 링크</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="name" placeholder="name@example.com">
+        <label for="floatingInput">관광지 명</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="title" placeholder="name@example.com">
+        <label for="floatingInput">제목</label>
+    </div>
+
+<!--    <div class="input-group mb-3">-->
+<!--        <label class="input-group-text" for="inputGroupSelect01">별점</label>-->
+<!--        <select class="form-select" id="star">-->
+<!--            <option selected>&#45;&#45; 선택하기 &#45;&#45;</option>-->
+<!--            <option value="1">⭐</option>-->
+<!--            <option value="2">⭐⭐</option>-->
+<!--            <option value="3">⭐⭐⭐</option>-->
+<!--            <option value="4">⭐⭐⭐⭐</option>-->
+<!--            <option value="5">⭐⭐⭐⭐⭐</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="star" placeholder="name@example.com">
+        <label for="floatingInput">별점</label>
+    </div>
+
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="comment"
+          style="height: 100px"></textarea>
+        <label for="floatingTextarea2">코멘트</label>
+    </div>
+    <div class="mybtns">
+        <button onclick="save_posting()" type="button" class="btn btn-dark">저장</button>
+        <button onclick="close_posting()" type="button" class="btn btn-outline-dark">닫기</button>
+    </div>
+</div>
+</body>
+</html>
+
+

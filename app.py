@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 from bson.objectid import ObjectId
 from pymongo import MongoClient
+from werkzeug.utils import secure_filename
 
 client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbgmo
@@ -52,6 +53,7 @@ def intro_sokcho():
             'link' : 'https://map.naver.com/v5/search/' + title + '/place'
         })
 
+
     return render_template("/sokcho/intro.html", locationlist=locationlist)
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
@@ -62,9 +64,109 @@ def detail_sokcho():
 def post_sokcho():
     if request.method == 'GET':
         return render_template("/sokcho/post.html")
-    elif request.method == 'POST':
-        return jsonify({'msg': '포스트 요청을 받았습니다.'})
 
+    elif request.method == 'POST':
+        city_receive = request.form['city_give']
+        dst_receive = request.form['dst_give']
+        star_receive = request.form['star_give']
+        title_receive = request.form['title_give']
+        dsc_receive = request.form['dsc_give']
+
+        doc = {
+            'city': city_receive,
+            'dst': dst_receive,
+            'star': star_receive,
+            'title': title_receive,
+            'dsc': dsc_receive,
+        }
+        db.post.insert_one(doc)
+        return jsonify({'msg': '등록되었습니다'})
+
+@app.route("/gangneung/intro", methods=["POST", "GET"])
+def intro_gangneung():
+
+    return render_template("gangneung/intro.html")
+
+@app.route("/gangneung/intro/list", methods=["GET"])
+def intro_gangneung_list():
+    # 해당 url 페이지 보안 문제로 header 값 때문에 데이터를 못받아 오는 경우가 생겨서 변경
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/104.0.0.0 Safari/537.36'}
+    data = requests.get('https://kr.hotels.com/go/south-korea/kr-best-gangneung-things-to-do', headers=headers)
+
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    locations = soup.select(
+        '#main-content > div > div.body-wrap.listicle-page > div.row.listicle-body > div.wrap01.col-12.col-l8 > div > '
+        'div.listicle-item-wrap > div')
+    locationlist = []
+
+    for location in locations:
+        a = location.select_one('div > div.header-wrap > div.header-inner-wrap > h2')
+        b = location.select_one('div > div.content-wrap > div.description-wrap > p')
+        c = location.select_one('div > div.img-wrap > div > img')
+        if a is not None or b is not None or c is not None:
+            title = a.text
+            desc = b.text
+            image = c['data-lazy-src']
+
+            # print(title + '\n' + desc + '\n' + image + '\n')
+            # 반복문 돌아가며 딕셔너리 배열로 만들기
+            locationlist += [{
+                'title': title,
+                'desc': desc,
+                'image': image
+            }]
+
+    # for i in locationlist:
+    #     print(i)
+
+    return jsonify({'locations': locationlist})
+
+@app.route("/post", methods=["POST", "GET"])
+def post():
+    # 포스팅 작성 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
+    if request.method == 'POST':
+
+        # file은 request.files로 받아 옵니다
+        title_receive = request.form['title']
+        desc_receive = request.form['desc']
+        writerid_receive = request.form['writerid']
+        star_receive = request.form['star']
+        file_receive = request.files['file']
+
+        path = "./static/images/"
+
+        # 파일 이름에 랜덤 문자열 삽입
+        length_of_string = 8
+        random_string = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length_of_string))
+        receive_filename = file_receive.filename
+        index_temp = receive_filename.find(".")
+        filename = receive_filename[:index_temp] + random_string + receive_filename[index_temp:]
+
+        # 이미지 업로드 경로가 존재 하지 않을 경우 생성
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        # 설정한 저장 경로에 파일 이름으로 저장
+        file_receive.save(path + filename)
+
+        # DB에 보낼 데이터 dict 저장
+        doc = {
+            'title': title_receive,
+            'desc': desc_receive,
+            'writerid': writerid_receive,
+            'star': int(star_receive),
+            'file': filename
+        }
+
+        # DB에 저장
+        db.posting.insert_one(doc)
+
+        return render_template("gangneung/post.html")
+
+    return render_template("gangneung/post.html")
 
 @app.route("/gangneung/intro", methods=["GET"])
 def list_get():
@@ -280,6 +382,43 @@ def comment_ayi():
     db.comment.insert_one(doc)
 
     return jsonify({'msg':'등록 완료!'})
+
+##포스팅 추가 Post
+@app.route("/postinglist", methods=["POST"])
+def postinglist_post():
+    picture_receive = request.form['picture_give']
+    name_receive = request.form['name_give']
+    title_receive = request.form['title_give']
+    star_receive = request.form['star_give']
+    comment_receive = request.form['comment_give']
+
+    print(name_receive)
+
+    doc = {
+        'picture' : picture_receive,
+        'name': name_receive,
+        'title': title_receive,
+        'star': star_receive,
+        'comment': comment_receive
+    }
+
+    db.posting.insert_one(doc)
+
+    return jsonify({'msg': 'POST(속초 포스팅) 연결 완료!'})
+
+##포스팅 추가 Get
+@app.route("/posting", methods=["GET"])
+def posting_get():
+    return jsonify({'msg': 'GET 연결 완료!'})
+
+
+##포스팅 목록
+@app.route("/postinglist", methods=["GET"])
+def postinglist_get():
+    posting_list = list(db.posting.find({}, {'_id': False}))
+
+    return jsonify({'postings': posting_list})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
