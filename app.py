@@ -52,7 +52,7 @@ def intro_sokcho():
             'link' : 'https://map.naver.com/v5/search/' + title + '/place'
         })
 
-    return render_template("./sokcho/intro.html", locationlist=locationlist)
+    return render_template("/sokcho/intro.html", locationlist=locationlist)
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
@@ -259,8 +259,27 @@ def detail_ayi():
     obj = request.values['_id']
 
     posting = db.posting.find_one({'_id' : ObjectId(obj)})
+    commentlist = list(db.comment.find({'posting' : obj}))
 
-    return render_template("ayi/detail.html", posting = posting)
+    return render_template("ayi/detail.html", posting = posting, commentlist = commentlist)
+
+@app.route("/ayi/comment", methods=["POST"])
+def comment_ayi():
+    pid = request.form['pid']
+    comment = request.form['comment']
+    nickname = request.form['nickname']
+    password = request.form['password']
+
+    doc = {
+        'comment' : comment,
+        'nickname' : nickname,
+        'password' : password,
+        'posting' : pid
+    }
+
+    db.comment.insert_one(doc)
+
+    return jsonify({'msg':'등록 완료!'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

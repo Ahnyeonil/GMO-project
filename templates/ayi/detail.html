@@ -17,11 +17,120 @@
 
         window.onload = function (){
 
-            alert($('#_id').val())
+        }
+
+        function save_comment() {
+
+            let nickname = $('#nickname').val()
+            let password = $('#password').val()
+            let comment = $('#comment').val()
+            let pid = $('#_id').val()
+
+            $.ajax({
+                type: 'POST',
+                url: '/ayi/comment',
+                data: {nickname : nickname, password : password, comment : comment, pid : pid},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            })
+        }
+
+        function goMain(){
+            location.href = '/'
+        }
+
+        function changeArea(){
+
+            if($('#select_').val() == '1'){
+                location.reload()
+            } else if($('#select_').val() == '2'){
+                location.href = '/gangneung/intro'
+            }
+        }
+
+        function goIntro(){
+            location.href = '/sokcho/intro'
         }
     </script>
+
+    <style>
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 20px auto;
+
+            box-shadow: 0px 0px 3px 0px black;
+            padding: 20px;
+        }
+
+        .mypost > button {
+            margin-top: 15px;
+        }
+
+        .mycards {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .mycards > .card {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="d-flex justify-content-around">
+            <button type="button" class="btn btn-primary m-2" onclick="goMain();">G.M.O</button>
+            <div class="row">
+                <select class="form-select form-control col-sm-2 m-2" style="width:auto;" id="select_" name="select_" onchange="changeArea();">
+                    <option value="0" selected>지역 선택</option>
+                    <option value="1">속초</option>
+                    <option value="2">강릉</option>
+                </select>
+                <button type="button" class="btn btn-secondary col-sm-2 m-2" style="width:auto;" onclick="goIntro();">소개페이지</button>
+            </div>
+        </div>
+    </header>
     <input type="hidden" name="_id" id="_id" value="{{ posting['_id'] }}">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ posting['title'] }}</h5>
+                <p class="card-text">{{ posting['desc'] }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="mypost">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nickname" placeholder="닉네임">
+            <label for="nickname">닉네임</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="password" placeholder="비밀번호">
+            <label for="password">비밀번호</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px"></textarea>
+                <label for="comment">댓글</label>
+        </div>
+        <button onclick="save_comment()" type="button" class="btn btn-dark">댓글 남기기</button>
+    </div>
+    <div class="mycards">
+        {% for c in commentlist %}
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ c.comment }}</p>
+                        <footer class="blockquote-footer">{{ c.nickname }}</footer>
+                        <footer class="blockquote-footer">{{ c.password }}</footer>
+                    </blockquote>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
