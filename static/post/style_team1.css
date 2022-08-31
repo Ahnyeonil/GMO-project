@@ -1,0 +1,293 @@
+    :root {
+        /*Color*/
+        --white-color: #FFFFFF;
+        --black-color: #181818;
+        --gray-light-color: #A9A9A9;
+        --blue-color: #79B2DF;
+
+        /*Font Size*/
+        --font-large: 55px;
+        --font-medium: 18px;
+        --font-small: 14px;
+        --font-micro: 12px;
+   }
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        text-decoration: none;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    ::placeholder, select, button, textarea {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: var(--black-color);
+        font-weight: 400;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        position: sticky;
+        top: 0px;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: var(--font-medium);
+
+        background-color: var(--white-color);
+        width: 100%;
+        height: 60px;
+        padding: 20px 7%;
+    }
+
+    nav .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav .logo:hover {
+        cursor: pointer;
+    }
+
+    nav .logo i {
+        color: var(--blue-color);
+        margin-right: 10px;
+        padding-bottom: 2px;
+    }
+
+    .nav-title {
+        color: var(--black-color);
+        padding-top: 5px;
+    }
+
+    nav .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: var(--white-color);
+        min-width : 60px;
+        max-height: 120px;
+        border-radius: 0 0 20px 20px;
+        padding-bottom: 12px;
+    }
+
+    .dropdown-content a{
+        display: block;
+        text-decoration : none;
+        color: var(--black-color);
+        font-size: var(--font-small);
+        height: 30px;
+        padding-top: 12px;
+    }
+
+    .menu-tour:hover .dropdown-content{
+        display: block;
+    }
+
+    .dropdown-content a:hover{
+        color: var(--blue-color);
+        font-size: var(--font-medium)
+    }
+
+    .menu-tour {
+        width: 60px;
+        height: 100%;
+        padding-top : 6px;
+
+        position: relative;
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        border : none;
+        border-radius : 20px 20px 0 0;
+        background-color: var(--white-color);
+
+        cursor : pointer;
+        color : var(--black-color);
+        font-weight: 400;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: var(--font-medium);
+    }
+
+    .menu-post {
+        min-width: 60px;
+        height: 100%;
+        border-radius: 25px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--black-color);
+        padding-top: 5px;
+    }
+
+    .menu-tour:hover, .menu-post:hover {
+        cursor: pointer;
+        background-color: var(--blue-color);
+        color: var(--white-color);
+    }
+
+    header {
+        background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
+        background-position: center;
+        background-size: cover;
+        position: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 250px;
+        padding-top: 10px;
+
+        font-family: 'Black Han Sans', sans-serif;
+        color: var(--white-color);
+        font-size: var(--font-large);
+        font-weight: lighter;
+        line-height: 55px;
+   }
+
+    header span {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header span:hover {
+        cursor: pointer;
+    }
+
+    .page-dsc {
+        width: 100%;
+        height: 60px;
+
+        padding: 5px 0 0 7%;
+        border-bottom: solid 1px var(--gray-light-color);
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: var(--font-medium);
+    }
+
+    .post-box {
+        width: 100%;
+        height: 500px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        padding: 0 7%;
+    }
+
+    .city, .area, .star {
+        width: 33%;
+        height: 50px;
+    }
+
+    select:hover {
+        cursor: pointer;
+    }
+
+    .v-line {
+        border-left : solid 1px var(--gray-light-color);
+        height : 25px;
+        margin-right: 10px;
+    }
+
+    .write {
+        width: 86%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        border: solid 1px var(--gray-light-color);
+    }
+
+    .post-title {
+        padding: 20px 20px 0 20px;
+        width: 100%;
+    }
+
+    textarea {
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        resize: none;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+
+    .submitArea {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .submit {
+        width: 100px;
+        height: 40px;
+
+        background-color: var(--black-color);
+        margin: 30px;
+
+        border: none;
+        border-radius: 12px;
+
+        color: var(--white-color);
+        font-weight: 700;
+    }
+
+    .submit:hover {
+        cursor: pointer;
+        background-color: var(--blue-color);
+    }
+
+    @media screen and (min-width: 1024px) {
+        .write {
+            width: 70%;
+        }
+
+        nav {
+            padding: 20px 15% 15px 15%;
+        }
+
+        .page-dsc {
+            padding: 5px 0 0 15%;
+        }
+
+        .info {
+            padding: 0 15%;
+        }
+    }

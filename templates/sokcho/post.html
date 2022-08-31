@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/script.js"></script>
+    <script src="https://kit.fontawesome.com/f16894770c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../static/post/style_team1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<body>
+    <!--Nav Bar-->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-plane"></i>
+            <span class="nav-title">GMO</span>
+        </a>
+        <div class="menu">
+            <div class="menu-tour">
+                <span class="tour">관광</span>
+                <div class="dropdown-content">
+                    <a href="#">강릉</a>
+                    <a href="#">속초</a>
+                </div>
+            </div>
+            <a href="#" class="menu-post">후기</a>
+        </div>
+    </nav>
+
+    <!--Header-->
+    <header>
+        <div onclick="location.href=''">
+            <span>강원도로</span>
+            <span>마실올래?</span>
+        </div>
+    </header>
+
+    <!--Page Description-->
+    <div class="page-dsc">
+        <span>여행 후기 등록하기</span>
+    </div>
+
+    <!--Posting Area-->
+    <section class="post-box">
+        <div class="info">
+            <input id="city" type="text" class="city" placeholder="지역">
+            <div class='v-line'></div>
+            <input id="dst" type="text" class="area" placeholder="장소">
+            <div class='v-line'></div>
+            <select id="star" class="star">
+                <option selected>별점 선택</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+        </div>
+        <div class="write">
+            <input id="title" type="text" class="post-title" placeholder="제목">
+            <textarea id="dsc" placeholder="내용을 입력하세요"></textarea>
+            <div class="submitArea">
+                <button onclick="save_post_sc()" type="button" class="submit">등록</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

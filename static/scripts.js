@@ -1,6 +1,4 @@
-
 function gangneung_list_call() {
-
     $.ajax({
         type: "GET",
         url: "/gangneung/intro/list",
@@ -175,3 +173,21 @@ function simple_detail_call(title) {
     })
 }
 
+// 포스팅-속초
+function save_post_sc() {
+    let city = $('#city').val()
+    let dst = $('#dst').val()
+    let star = $('#star').val()
+    let title = $('#title').val()
+    let dsc = $('#dsc').val()
+
+    $.ajax({
+        type: 'POST',
+        url: '/post',
+        data: { city_give:city, dst_give:dst, star_give:star, title_give:title, dsc_give:dsc},
+        success: function (response) {
+            alert(response['msg'])
+            window.location.reload()
+        }
+    });
+}
