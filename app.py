@@ -131,7 +131,7 @@ def post():
 
         # 파일 이름에 랜덤 문자열 삽입
         length_of_string = 8
-        random_string = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length_of_string))
+        random_string = 'b'.join(random.choice(string.ascii_letters + string.digits) for _ in range(length_of_string))
         receive_filename = file_receive.filename
         index_temp = receive_filename.find(".")
         filename = receive_filename[:index_temp] + random_string + receive_filename[index_temp:]
