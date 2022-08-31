@@ -25,7 +25,6 @@ function signup() {
 
         }
     })
-}
 
 // 포스팅-속초
 function save_post_sc() {
