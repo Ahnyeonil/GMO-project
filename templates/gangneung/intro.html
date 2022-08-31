@@ -77,19 +77,13 @@
                     <div class="col-12">
                         {% for i in travleList %}
                         <article class="tourist-attraction">
-                            <h1
-                                    area-lable="Tourist attraction title"
-                                    class="tourist-attraction__title"
-                            >
+                            <h1 area-lable="Tourist attraction title" class="tourist-attraction__title">
                                 {{ i['title'] }}
                             </h1>
                             <ul area-lable="Hashtag" class="tourist-attraction__taglist">
                                 <li>{% for t in i['tag'] %} #{{ t }} {% endfor %}</li>
                             </ul>
-                            <p
-                                    area-lable="Tourist attraction Description"
-                                    class="tourist-attraction__desc"
-                            >
+                            <p area-lable="Tourist attraction Description" class="tourist-attraction__desc">
                                 {{ i['desc'] }}
                             </p>
                         </article>
