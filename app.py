@@ -352,7 +352,6 @@ def posting_post():
 
     return jsonify({'msg': 'POST(속초 포스팅) 연결 완료!'})
 
-
 # 속초 포스팅 추가 페이지(posting.html) Get 연결
 @app.route("/sokcho/posting/get", methods=["GET"])
 def posting_get():
