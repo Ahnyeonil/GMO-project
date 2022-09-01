@@ -1,3 +1,59 @@
+function weather() {
+    const API_KEY = "222e7197c6498dd6ede62a9fe39c3dee";
+    const weather_gangneung = "https://api.openweathermap.org/data/2.5/weather?q=gangneung&appid=222e7197c6498dd6ede62a9fe39c3dee&units=metric";
+    const weather_sokcho = "http://api.openweathermap.org/data/2.5/weather?q=sokcho&appid=222e7197c6498dd6ede62a9fe39c3dee&units=metric";
+}
+
+function weather_sokcho() {
+    $.ajax({
+        type: "GET",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=sokcho&appid=222e7197c6498dd6ede62a9fe39c3dee&units=metric",
+        data: {},
+        success: function(res) {
+            let temp = res["main"]["temp"]
+            let temp_html = `
+                <a href="/sokcho/intro">
+                    <div class="card1">
+                        <div class="card-img">
+                            <img src="https://i.redd.it/b3esnz5ra34y.jpg">
+                        </div>
+                        <div class="card_title">
+                            <span>${temp} ℃</span>
+                            <p>속초</p>
+                        </div>
+                    </div>
+                </a>
+            `
+            $(".cards-list").append(temp_html)
+        }
+    })
+}
+
+function weather_gangneung() {
+    $.ajax({
+        type: "GET",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=gangneung&appid=222e7197c6498dd6ede62a9fe39c3dee&units=metric",
+        data: {},
+        success: function(res) {
+            let temp = res["main"]["temp"]
+            let temp_html = `
+                <a href="/gangneung/intro">
+                    <div class="card1">
+                        <div class="card-img">
+                            <img src="https://i.redd.it/b3esnz5ra34y.jpg">
+                        </div>
+                        <div class="card_title">
+                            <span>${temp} ℃</span>
+                            <p>강릉</p>
+                        </div>
+                    </div>
+                </a>
+            `
+            $(".cards-list").append(temp_html)
+        }
+    })
+}
+ 
 function gangneung_list_call() {
     $.ajax({
         type: "GET",
