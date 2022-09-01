@@ -17,7 +17,7 @@
 <body>
     <!--Nav Bar-->
     <nav>
-        <a href="#" class="logo">
+        <a href="../index.html" class="logo">
             <i class="fa-solid fa-plane"></i>
             <span class="nav-title">GMO</span>
         </a>
@@ -25,20 +25,20 @@
             <div class="menu-tour">
                 <span class="tour">관광</span>
                 <div class="dropdown-content">
-                    <a href="#">강릉</a>
-                    <a href="#">속초</a>
+                    <a href="../gangneung/intro.html">강릉</a>
+                    <a href="intro.html">속초</a>
                 </div>
             </div>
-            <a href="#" class="menu-post">후기</a>
+            <a href="PostingList.html" class="menu-post">후기</a>
         </div>
     </nav>
 
     <!--Header-->
     <header>
-        <div onclick="location.href=''">
+        <a href="../index.html">
             <span>강원도로</span>
             <span>마실올래?</span>
-        </div>
+        </a>
     </header>
 
     <!--Page Description-->
@@ -64,6 +64,7 @@
         </div>
         <div class="write">
             <input id="title" type="text" class="post-title" placeholder="제목">
+            <hr>
             <textarea id="dsc" placeholder="내용을 입력하세요"></textarea>
             <div class="submitArea">
                 <button onclick="save_post_sc()" type="button" class="submit">등록</button>

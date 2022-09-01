@@ -18,10 +18,12 @@ db = client.dbgmo
 
 app = Flask(__name__)
 
+
 # ayi
 @app.route("/")
 def home():
     return render_template('index.html')
+
 
 @app.route("/sokcho/intro", methods=["POST", "GET"])
 def intro_sokcho():
@@ -47,18 +49,19 @@ def intro_sokcho():
             tag.append('#' + tags[num].text)
 
         locationlist.append({
-            'title' : title,
-            'tag' : tag,
-            'desc' : desc,
-            'link' : 'https://map.naver.com/v5/search/' + title + '/place'
+            'title': title,
+            'tag': tag,
+            'desc': desc,
+            'link': 'https://map.naver.com/v5/search/' + title + '/place'
         })
 
-
     return render_template("/sokcho/intro.html", locationlist=locationlist)
+
 
 @app.route("/sokcho/detail", methods=["POST", "GET"])
 def detail_sokcho():
     return render_template("detail.html")
+
 
 @app.route("/sokcho/post", methods=["POST", "GET"])
 def post_sokcho():
@@ -81,6 +84,7 @@ def post_sokcho():
         }
         db.post.insert_one(doc)
         return jsonify({'msg': '등록되었습니다'})
+
 
 @app.route("/gangneung/intro", methods=["POST", "GET"])
 def intro_gangneung():
@@ -114,6 +118,7 @@ def intro_gangneung():
         })
 
     return render_template("/gangneung/intro.html", travleList=travleList)
+
 
 @app.route("/post", methods=["POST", "GET"])
 def post():
@@ -155,55 +160,11 @@ def post():
         # DB에 저장
         db.posting.insert_one(doc)
 
-        success_msg = "포스팅 완료되었습니다"
-
-        return render_template("gangneung/post.html", success_msg=success_msg)
-
-    return render_template("gangneung/post.html")
-
-@app.route("/post_", methods=["POST", "GET"])
-def post_():
-    # 포스팅 작성 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
-    if request.method == 'POST':
-
-        # file은 request.files로 받아 옵니다
-        title_receive = request.form['title']
-        desc_receive = request.form['desc']
-        writerid_receive = request.form['writerid']
-        star_receive = request.form['star']
-        file_receive = request.files['file']
-
-        path = "./static/images/"
-
-        # 파일 이름에 랜덤 문자열 삽입
-        length_of_string = 8
-        random_string = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length_of_string))
-        receive_filename = file_receive.filename
-        index_temp = receive_filename.find(".")
-        filename = receive_filename[:index_temp] + random_string + receive_filename[index_temp:]
-
-        # 이미지 업로드 경로가 존재 하지 않을 경우 생성
-        if not os.path.exists(path):
-            os.mkdir(path)
-
-        # 설정한 저장 경로에 파일 이름으로 저장
-        file_receive.save(path + filename)
-
-        # DB에 보낼 데이터 dict 저장
-        doc = {
-            'title': title_receive,
-            'desc': desc_receive,
-            'writerid': writerid_receive,
-            'star': int(star_receive),
-            'file': filename
-        }
-
-        # DB에 저장
-        db.posting.insert_one(doc)
-
-        return render_template("gangneung/post.html")
+        # POST => redirect
+        return redirect("/post")
 
     return render_template("gangneung/post.html")
+
 
 @app.route("/post/list", methods=["POST", "GET"])
 def post_list_send():
@@ -238,15 +199,19 @@ def detail():
 
         db.comment.insert_one(doc)
 
+        return redirect("/detail")
+
     all_post = list(db.posting.find())
 
     for a in all_post:
         a['_id'] = str(a['_id'])
 
-    id_receive = '63087d427b262f1057c5bbae'
-    default_comment = list(db.comment.find({'posting': id_receive}, {'_id': False}))
+    id_receive = '630fba7de2397ba9a399a2ef'
+    default_comment = list(db.comment.find({'posting': id_receive}))
+    for a in default_comment:
+        a['_id'] = str(a['_id'])
 
-    return render_template("gangneung/detail.html", postlist=all_post, commentlist=default_comment)
+    return render_template("gangneung/detail.html", postlist=all_post, default_comment_list=default_comment)
 
 
 @app.route("/detail/list", methods=["POST", "GET"])
@@ -257,25 +222,45 @@ def detail_list_send():
         postingfind = db.posting.find_one({'_id': ObjectId(id_receive)})
         postingfind['_id'] = str(postingfind['_id'])
 
-        commentfind = list(db.comment.find({'posting': id_receive}, {'_id': False}))
+        commentfind = list(db.comment.find({'posting': id_receive}))
+        for a in commentfind:
+            a['_id'] = str(a['_id'])
 
         return jsonify({'postdetail': postingfind, 'comments': commentfind, 'hiddenid': id_receive})
+
+
+@app.route("/gangneung/detail/deletecomment", methods=["POST", "GET"])
+def detail_comment():
+    if request.method == 'POST':
+        id_receive = request.form['commentid']
+        pwd_receive = request.form['commentpwd']
+
+        commentfind = db.comment.find_one({'_id': ObjectId(id_receive)})
+
+        if commentfind is not None and commentfind['password'] == pwd_receive:
+            db.comment.delete_one({'_id': ObjectId(id_receive)})
+            return jsonify({"msg": "댓글 삭제 완료"})
+        
+        else:
+            return jsonify({"msg": "비밀번호가 다릅니다"})
+
 
 @app.route("/temp/tempComment", methods=["POST", "GET"])
 def tempComment():
     obj = '630945ebfb79ff41c5bbda70'
-#    db.comment.insert_one({'comment': '고고댓글3', 'nickname': '안철수3', 'password': '1234', 'posting': '630945ebfb79ff41c5bbda70'})
-    return render_template("temp/tempComment.html", obj = obj)
+    #    db.comment.insert_one({'comment': '고고댓글3', 'nickname': '안철수3', 'password': '1234', 'posting': '630945ebfb79ff41c5bbda70'})
+    return render_template("temp/tempComment.html", obj=obj)
+
 
 @app.route("/tempHomework", methods=["GET"])
 def homework_get():
-
     obj = request.values['obj']
-    fan_list = list(db.comment.find({'posting' : obj}))
+    fan_list = list(db.comment.find({'posting': obj}))
 
     for l in fan_list:
         l['_id'] = str(l['_id'])
-    return jsonify({'fan_list' : fan_list})
+    return jsonify({'fan_list': fan_list})
+
 
 @app.route("/ayi/post", methods=["POST", "GET"])
 def post_ayi():
@@ -324,16 +309,18 @@ def post_ayi():
     for p in postinglist:
         p['_id'] = str(p['_id'])
 
-    return render_template("ayi/post.html", postinglist = postinglist)
+    return render_template("ayi/post.html", postinglist=postinglist)
+
 
 @app.route("/ayi/detail", methods=["GET"])
 def detail_ayi():
     obj = request.values['_id']
 
-    posting = db.posting.find_one({'_id' : ObjectId(obj)})
-    commentlist = list(db.comment.find({'posting' : obj}))
+    posting = db.posting.find_one({'_id': ObjectId(obj)})
+    commentlist = list(db.comment.find({'posting': obj}))
 
-    return render_template("ayi/detail.html", posting = posting, commentlist = commentlist)
+    return render_template("ayi/detail.html", posting=posting, commentlist=commentlist)
+
 
 @app.route("/ayi/comment", methods=["POST"])
 def comment_ayi():
@@ -343,15 +330,16 @@ def comment_ayi():
     password = request.form['password']
 
     doc = {
-        'comment' : comment,
-        'nickname' : nickname,
-        'password' : password,
-        'posting' : pid
+        'comment': comment,
+        'nickname': nickname,
+        'password': password,
+        'posting': pid
     }
 
     db.comment.insert_one(doc)
 
-    return jsonify({'msg':'등록 완료!'})
+    return jsonify({'msg': '등록 완료!'})
+
 
 ##포스팅 추가 Post
 @app.route("/postinglist", methods=["POST"])
@@ -365,7 +353,7 @@ def postinglist_post():
     print(name_receive)
 
     doc = {
-        'picture' : picture_receive,
+        'picture': picture_receive,
         'name': name_receive,
         'title': title_receive,
         'star': star_receive,
@@ -375,6 +363,7 @@ def postinglist_post():
     db.posting.insert_one(doc)
 
     return jsonify({'msg': 'POST(속초 포스팅) 연결 완료!'})
+
 
 ##포스팅 추가 Get
 @app.route("/posting", methods=["GET"])

@@ -160,7 +160,6 @@
         padding-top: 10px;
 
         font-family: 'Black Han Sans', sans-serif;
-        color: var(--white-color);
         font-size: var(--font-large);
         font-weight: lighter;
         line-height: 55px;
@@ -170,6 +169,7 @@
         display: flex;
         flex-direction: column;
         text-align: center;
+        color: var(--white-color);
     }
 
     header span:hover {
@@ -235,8 +235,15 @@
     }
 
     .post-title {
-        padding: 20px 20px 0 20px;
+        padding: 20px 20px 20px 20px;
         width: 100%;
+    }
+
+    .write hr {
+        width: 96%;
+        height: 1px;
+        margin: auto;
+        background-color: var(--gray-light-color);
     }
 
     textarea {
