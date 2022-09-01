@@ -63,9 +63,9 @@
 
     <!-- /detail post -->
 
-
+      {% set count = default_comment_list | length %}
       <div class="comment-head">
-        <span> 댓글 {n}개</span>
+        <span> 댓글 {{count}}개</span>
       </div>
 
       <!-- comment post -->
@@ -89,15 +89,17 @@
 
       <div class="comments">
 
-        {% for i in commentlist %}
+        {% for i in default_comment_list %}
         {% set nickname = i['nickname'] %}
         {% set comment = i['comment'] %}
         {% set password = i['password'] %}
         {% set posting = i['posting'] %}
+        {% set commentid = i['_id'] %}
         <div class="comment">
           <h4 class="comment-author">{{nickname}}</h4>
           <p>{{comment}}</p>
-          <a href="#" class="close">&times;</a>
+          <a href="#" class="close" onclick="delete_comment('{{commentid}}')">&times;</a>
+          <input type="hidden" value="{{commentid}}" />
         </div>
         {% endfor %}
 

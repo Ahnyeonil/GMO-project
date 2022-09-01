@@ -113,13 +113,15 @@ function detail_list_call(id) {
 
                 let comment = comments[i]['comment']
                 let nickname = comments[i]['nickname']
+                let commentid = comment[i]['_id']
                 // let password = comments[i]['password']
                 // let posting = comments[i]['posting']
 
                 let temp_html = `<div class="comment">
                                   <h4 class="comment-author">${nickname}</h4>
                                   <p>${comment}</p>
-                                  <a href="#" class="close">&times;</a>
+                                  <a href="#" class="close" onclick="delete_comment(${commentid})">&times;</a>
+                                  <input type="hidden" value="${commentid}" />
                                 </div>`
 
 
@@ -127,8 +129,33 @@ function detail_list_call(id) {
 
             }
 
+            // count
+            let count = comments.length
+            let countclass = $('.comment-head > span')
+            countclass.text(` 댓글 ${count}개`)
+
         }
     })
+}
+
+function delete_comment(commentid) {
+
+    let password_required = prompt("정말 삭제를 원하시면 비밀번호를 입력해주세요")
+
+    if (password_required === "" || password_required == null)
+        return alert("비밀번호를 입력하지 않으면 삭제할 수 없습니다")
+
+    $.ajax({
+        type: 'POST',
+        url: '/gangneung/detail/deletecomment',
+        data: {commentid: commentid, commentpwd: password_required},
+        success: function (response) {
+            if(response !== undefined) {
+                alert(response['msg'])
+                window.location.reload()
+            }
+        }
+    });
 }
 
 function simple_detail_call(title) {
@@ -153,7 +180,7 @@ function simple_detail_call(title) {
 
             let temp_html = `<li class="detailcard-item">
                                    <div class="detailcard">
-                                     <div class="detailcard-image"><img src="../../static/images/${file}" alt="사진"></div>
+                                     <div class="detailcard-image"><img src="../../static/images/${file}" alt="사진" class="object-fix-simpledetail"></div>
                                      <div class="detailcard_content">
                                        <h2 class="detailcard_title">장소 : ${title}</h2>
                                        <p class="detailcard_text">설명 : ${desc}</p>
@@ -191,3 +218,4 @@ function save_post_sc() {
         }
     });
 }
+
