@@ -202,16 +202,18 @@ function simple_detail_call(title) {
 
 // 포스팅-속초
 function save_post_sc() {
-    let city = $('#city').val()
+    let writerid = $('#writerid').val()
     let dst = $('#dst').val()
     let star = $('#star').val()
     let title = $('#title').val()
-    let dsc = $('#dsc').val()
+    let desc = $('#desc').val()
+    let file = $('#file').val()
 
     $.ajax({
         type: 'POST',
+        enctype: 'multipart/form-data',
         url: '/post',
-        data: { city_give:city, dst_give:dst, star_give:star, title_give:title, dsc_give:dsc},
+        data: { writerid:writerid, dst:dst, star:star, title:title, desc:desc, file:file},
         success: function (response) {
             alert(response['msg'])
             window.location.reload()

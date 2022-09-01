@@ -125,6 +125,8 @@ def post():
     # 포스팅 작성 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
     if request.method == 'POST':
 
+        print(request.form)
+        print(request.files)
         # file은 request.files로 받아 옵니다
         title_receive = request.form['title']
         desc_receive = request.form['desc']
@@ -244,24 +246,6 @@ def detail_comment():
         else:
             return jsonify({"msg": "비밀번호가 다릅니다"})
 
-
-@app.route("/temp/tempComment", methods=["POST", "GET"])
-def tempComment():
-    obj = '630945ebfb79ff41c5bbda70'
-    #    db.comment.insert_one({'comment': '고고댓글3', 'nickname': '안철수3', 'password': '1234', 'posting': '630945ebfb79ff41c5bbda70'})
-    return render_template("temp/tempComment.html", obj=obj)
-
-
-@app.route("/tempHomework", methods=["GET"])
-def homework_get():
-    obj = request.values['obj']
-    fan_list = list(db.comment.find({'posting': obj}))
-
-    for l in fan_list:
-        l['_id'] = str(l['_id'])
-    return jsonify({'fan_list': fan_list})
-
-
 @app.route("/ayi/post", methods=["POST", "GET"])
 def post_ayi():
     # 포스팅 작성 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
@@ -341,16 +325,20 @@ def comment_ayi():
     return jsonify({'msg': '등록 완료!'})
 
 
-##포스팅 추가 Post
-@app.route("/postinglist", methods=["POST"])
-def postinglist_post():
+# 속초 포스팅 추가 접속 화면
+@app.route('/sokcho/posting')
+def posting():
+    return render_template('posting.html')
+
+
+# 속초 포스팅 추가 페이지(posting.html) 데이터 서버와 클라이언트 통신
+@app.route("/sokcho/posting/post", methods=["POST"])
+def posting_post():
     picture_receive = request.form['picture_give']
     name_receive = request.form['name_give']
     title_receive = request.form['title_give']
     star_receive = request.form['star_give']
     comment_receive = request.form['comment_give']
-
-    print(name_receive)
 
     doc = {
         'picture': picture_receive,
@@ -365,14 +353,13 @@ def postinglist_post():
     return jsonify({'msg': 'POST(속초 포스팅) 연결 완료!'})
 
 
-##포스팅 추가 Get
-@app.route("/posting", methods=["GET"])
+# 속초 포스팅 추가 페이지(posting.html) Get 연결
+@app.route("/sokcho/posting/get", methods=["GET"])
 def posting_get():
     return jsonify({'msg': 'GET 연결 완료!'})
 
-
-##포스팅 목록
-@app.route("/postinglist", methods=["GET"])
+# 속초 포스팅 리스트 페이지(PostingList.html) Get 연결
+@app.route("/sokcho/postinglist/get", methods=["GET"])
 def postinglist_get():
     posting_list = list(db.posting.find({}, {'_id': False}))
 

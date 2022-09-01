@@ -148,7 +148,7 @@
         padding: 0 7%;
     }
 
-    .city, .area, .star {
+    .writerid, .area, .star, .file {
         width: 33%;
         height: 40px;
     }
