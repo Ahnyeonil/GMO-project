@@ -91,53 +91,42 @@
         }
 
         #picture{
-            height: 400px;
+            height: 200px;
         }
 
     </style>
     <script>
-        // $(document).ready(function () {
-        //     show_posting();
-        // });
-        //
-        // function show_posting() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "/posting",
-        //         data: {},
-        //         success: function (response) {
-        //             alert(response["msg"])
-        //         }
-        //     });
-        // }
+        $(document).ready(function () {
+            show_posting();
+        });
+
+        function show_posting() {
+            $.ajax({
+                type: "GET",
+                url: "/sokcho/posting/get",
+                data: {},
+                success: function (response) {
+                    alert(response["msg"])
+                }
+            });
+        }
 
         function save_posting() {
             let picture = $('#picture').val()
             let name = $('#name').val()
             let title = $('#title').val()
-            let star = $('#star').val()
+            var s = document.getElementById('star')
+            star = s.options[s.selectedIndex].value
             let comment = $('#comment').val()
 
-            console.log(name)
 
             $.ajax({
                 type: "POST",
-                url: "/posting",
+                url: "/sokcho/posting/post",
                 data: { picture_give:picture, name_give:name, title_give:title, star_give:star, comment_give:comment },
                 success: function (response) {
                     alert(response["msg"])
                     window.location.reload()
-                }
-            });
-        }
-
-        function done_posting(num) {
-            $.ajax({
-                type: "POST",
-                url: "/posting/done",
-                data: {sameple_give: '데이터전송'},
-                success: function (response) {
-                    alert(response["msg"])
                 }
             });
         }
@@ -171,21 +160,16 @@
         <label for="floatingInput">제목</label>
     </div>
 
-<!--    <div class="input-group mb-3">-->
-<!--        <label class="input-group-text" for="inputGroupSelect01">별점</label>-->
-<!--        <select class="form-select" id="star">-->
-<!--            <option selected>&#45;&#45; 선택하기 &#45;&#45;</option>-->
-<!--            <option value="1">⭐</option>-->
-<!--            <option value="2">⭐⭐</option>-->
-<!--            <option value="3">⭐⭐⭐</option>-->
-<!--            <option value="4">⭐⭐⭐⭐</option>-->
-<!--            <option value="5">⭐⭐⭐⭐⭐</option>-->
-<!--        </select>-->
-<!--    </div>-->
-
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="star" placeholder="name@example.com">
-        <label for="floatingInput">별점</label>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">별점</label>
+        <select class="form-select" id="star">
+            <option selected>-- 선택하기 --</option>
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
     </div>
 
     <div class="form-floating">
