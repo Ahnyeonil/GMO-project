@@ -14,6 +14,7 @@ a {
   text-decoration: none;
 }
 
+
 /* nav 시작 */
 .navbar {
   top: 0;
@@ -290,17 +291,17 @@ img {
   transform: scale(1.1);
 }
 
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
-  }
-}
+/*@media (min-width: 40rem) {*/
+/*  .cards_item {*/
+/*    width: 50%;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
-  }
-}
+/*@media (min-width: 56rem) {*/
+/*  .cards_item {*/
+/*    width: 33.3333%;*/
+/*  }*/
+/*}*/
 
 .card {
   background-color: white;
@@ -337,3 +338,83 @@ img {
   font-weight: 400;
 }
 /* 본문 끝 */
+
+
+
+
+.object-fix {
+  object-fit: cover;
+  max-height: 200px;
+}
+
+.object-fix-simpledetail {
+  object-fit: cover;
+  max-height: 300px;
+}
+
+/*.card-image {*/
+/*  width:100%;*/
+/*  height:1000px;*/
+
+/*  background-size: cover;*/
+/*  background-position: center center;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
+
+
+/* detail 용으로 팝업 복사 */
+
+
+.detail-popup {
+  position: fixed;
+  width: 75%;
+  height: 65%;
+  padding: 40px;
+  max-width: 500px;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  color: #FFF;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s, visibility 0s linear .5s;
+  z-index: 1;
+}
+.detail-popup:target {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+.detail-popup .detail-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 20px;
+  color: #FFF;
+  transition: color .3s;
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.detail-popup .detail-close:hover {
+  color: #03e9f4;
+}
+.detail-close-popup {
+  background-color: rgba(0,0,0,0.5);
+  cursor: default;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility 0s linear .5s;
+}
+.detail-popup:target + .detail-close-popup {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
