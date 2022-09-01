@@ -281,16 +281,25 @@ def comment_ayi():
 
     return jsonify({'msg':'등록 완료!'})
 
-##포스팅 추가 Post
-@app.route("/postinglist", methods=["POST"])
-def postinglist_post():
+# 속초 포스팅 리스트 접속 화면
+@app.route('/')
+def postingList():
+    return render_template('PostingList.html')
+
+# 속초 포스팅 추가 접속 화면
+@app.route('/sokcho/posting')
+def posting():
+    return render_template('posting.html')
+
+
+# 속초 포스팅 추가 페이지(posting.html) 데이터 서버와 클라이언트 통신
+@app.route("/sokcho/posting/post", methods=["POST"])
+def posting_post():
     picture_receive = request.form['picture_give']
     name_receive = request.form['name_give']
     title_receive = request.form['title_give']
     star_receive = request.form['star_give']
     comment_receive = request.form['comment_give']
-
-    print(name_receive)
 
     doc = {
         'picture' : picture_receive,
@@ -304,14 +313,13 @@ def postinglist_post():
 
     return jsonify({'msg': 'POST(속초 포스팅) 연결 완료!'})
 
-##포스팅 추가 Get
-@app.route("/posting", methods=["GET"])
+# 속초 포스팅 추가 페이지(posting.html) Get 연결
+@app.route("/sokcho/posting/get", methods=["GET"])
 def posting_get():
     return jsonify({'msg': 'GET 연결 완료!'})
 
-
-##포스팅 목록
-@app.route("/postinglist", methods=["GET"])
+# 속초 포스팅 리스트 페이지(PostingList.html) Get 연결
+@app.route("/sokcho/postinglist/get", methods=["GET"])
 def postinglist_get():
     posting_list = list(db.posting.find({}, {'_id': False}))
 

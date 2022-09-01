@@ -24,9 +24,9 @@
             width:  100%;
             height: 250px;
 
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://movie-phinf.pstatic.net/20210715_95/1626338192428gTnJl_JPEG/movie_image.jpg");
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEwMDJfODMg%2FMDAxNjMzMTc5NjU0NjE2.yqS5jw-znVbpGmu58eVQRUf7DSWAy-0lKn8mz2ZQ1i0g.-0O5r6-jyNNuK7eLd0imr6BvXE5_Dgtgcx-Wzsdpceog.JPEG.self_heal%2F%25C3%25E1%25BD%25C4%25C0%25CC.JPG&type=a340");
             background-position: center;
-            background-size: cover;
+            /*background-size: cover;*/
 
             color: white;
 
@@ -93,7 +93,7 @@
             $('#cards-box').empty()
             $.ajax({
                 type: "GET",
-                url: "/postinglist",
+                url: "/sokcho/postinglist/get",
                 data: {},
                 success: function (response) {
                     let rows = response['postings']
@@ -132,7 +132,8 @@
         // }
 
         function PostingPopup() {
-            window.open("/postinglist", "강원도(속초) 포스팅", "width=900, height=1000, left=100, top=50");
+            window.open("/sokcho/posting", "강원도(속초) 포스팅", "width=900, height=1000, left=100, top=50");
+            // location.href = '/sokcho'
         }
 
 
