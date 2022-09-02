@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../../static/script.js"></script>
+    <script type="text/javascript" src="../../static/scripts.js"></script>
     <script src="https://kit.fontawesome.com/f16894770c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../static/post/style_team1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
 <body>
     <!--Nav Bar-->
     <nav>
+        <a href="/" class="logo">
+            <i class="fa-solid fa-plane"></i>
+            <span class="nav-title">GMO</span>
+        </a>
+        <div class="menu">
+            <div class="menu-tour">
+                <span class="tour">관광</span>
+                <div class="dropdown-content">
+                    <a href="/gangneung/intro">강릉</a>
+                    <a href="sokcho/intro">속초</a>
+                </div>
+            </div>
+            <a href="/sokcho/PostingList" class="menu-post">후기</a>
+        </div>
+    </nav>
+
+    <!--<nav>
         <a href="../index.html" class="logo">
             <i class="fa-solid fa-plane"></i>
             <span class="nav-title">GMO</span>
@@ -31,11 +49,11 @@
             </div>
             <a href="PostingList.html" class="menu-post">후기</a>
         </div>
-    </nav>
+    </nav>-->
 
     <!--Header-->
     <header>
-        <a href="../index.html">
+        <a href="/">
             <span>강원도로</span>
             <span>마실올래?</span>
         </a>
@@ -47,13 +65,13 @@
     </div>
 
     <!--Posting Area-->
-    <section class="post-box">
+    <form type="form" id="sform" name="sform" class="post-box" enctype="multipart/form-data" method="post" action="/post">
         <div class="info">
-            <input id="city" type="text" class="city" placeholder="지역">
+            <input id="writerid" name="writerid" type="text" class="writerid" placeholder="작성자">
             <div class='v-line'></div>
-            <input id="dst" type="text" class="area" placeholder="장소">
+            <input id="dst" name="dst" type="text" class="area" placeholder="장소">
             <div class='v-line'></div>
-            <select id="star" class="star">
+            <select id="star" name="star" class="star">
                 <option selected>별점 선택</option>
                 <option value="1">⭐</option>
                 <option value="2">⭐⭐</option>
@@ -62,14 +80,18 @@
                 <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
         </div>
+        <div class="info">
+            <input type="file" id="file" name="file" class="file" required="">
+        </div>
         <div class="write">
-            <input id="title" type="text" class="post-title" placeholder="제목">
+            <input id="title" name="title" type="text" class="post-title" placeholder="제목">
             <hr>
-            <textarea id="dsc" placeholder="내용을 입력하세요"></textarea>
+            <textarea id="desc" name="desc" placeholder="내용을 입력하세요"></textarea>
             <div class="submitArea">
-                <button onclick="save_post_sc()" type="button" class="submit">등록</button>
+                <!--onclick="save_post_sc()" type="button"-->
+                <button type="submit" class="submit">등록</button>
             </div>
         </div>
-    </section>
+    </form>
 </body>
 </html>
