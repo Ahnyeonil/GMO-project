@@ -7,17 +7,15 @@ import requests
 from flask import Flask, render_template, request, jsonify, redirect, session
 from bs4 import BeautifulSoup
 
-# mongodb url 변경
-
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 from werkzeug.utils import secure_filename
 
+# mongodb url 변경
 client = MongoClient('mongodb+srv://gmo:gmo@gmo.fmwwa2z.mongodb.net/?retryWrites=true&w=majority')
 db = client.dbgmo
 
 app = Flask(__name__)
-
 
 # ayi
 @app.route("/")
@@ -324,11 +322,10 @@ def comment_ayi():
 
     return jsonify({'msg': '등록 완료!'})
 
-
 # 속초 포스팅 추가 접속 화면
 @app.route('/sokcho/posting')
 def posting():
-    return render_template('posting.html')
+    return render_template('post.html')
 
 
 # 속초 포스팅 추가 페이지(posting.html) 데이터 서버와 클라이언트 통신
@@ -341,7 +338,7 @@ def posting_post():
     comment_receive = request.form['comment_give']
 
     doc = {
-        'picture': picture_receive,
+        'picture' : picture_receive,
         'name': name_receive,
         'title': title_receive,
         'star': star_receive,
@@ -363,7 +360,6 @@ def postinglist_get():
     posting_list = list(db.posting.find({}, {'_id': False}))
 
     return jsonify({'postings': posting_list})
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
