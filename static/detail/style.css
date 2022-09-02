@@ -74,7 +74,7 @@ main {
   width: 25%;
   min-width: 25%;
   overflow: scroll;
-  height: 180vh;
+  height: 210vh;
   background: rgba(0,0,0,0.3);
   background-blend-mode: multiply;
   background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
@@ -214,7 +214,7 @@ img {
   max-height: 200px;
   height: auto;
   width: 100%;
-
+  
 }
 /* 게시물 리스트 끝 */
 
@@ -225,8 +225,13 @@ img {
 }
 
 .content-title {
-  padding: 50px;
-  border-bottom: 3px solid #000000a9;
+  padding: 30px 50px 10px 50px;
+  background-color: #dedede;
+  border-bottom: 1px solid black;
+}
+
+.content-desc {
+  padding: 25px 50px 50px 50px;
 }
 
 .star-rate {
@@ -239,28 +244,12 @@ img {
   background-color: rgba(213, 217, 221, 0.795);
 }
 .post-comment {
-  margin: 10px 50px 15px 50px;
-  padding: 30px 10px 30px 50px;
+  padding: 50px;
   background-color: rgb(238, 238, 238);
 }
 
 .post-comment span {
   margin-left: 15px;
-}
-
-.post-comment button {
-  margin-left: 15px;
-  width: 10%;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 1px;
-  padding: 10px 5px;
-  background: #27ae60;
-  font-weight: bold;
-}
-.post-comment button:hover, .post-comment button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
 }
 
 .comments {
@@ -279,23 +268,64 @@ img {
   border-bottom: 1px solid #0000001e;
 }
 
-.comment-comment input {
-  width: 70%;
-  height: 3rem;
-  margin: 15px;
-  border: none;
-  border-bottom: 1px solid #757575;
+/* 댓글 작성 창 시작 */
+
+form label {
+  border-bottom: 1px solid #333;
+  display: block;
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
-.comment-profile {
-  width: 60%;
-  margin-left: 15px;
-  margin-bottom: 15px;
+form label.col-one-half {
+  float: left;
+  width: 50%;
 }
 
-.comment-profile input {
-  border: none;
-  border-bottom: 1px solid #757575;
+form label.col-one-half:nth-of-type(even) {
+  border-left: 1px solid #333;
+  padding-left: 0.25em;
 }
+
+form label input {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  line-height: 1em;
+  font-weight: 300;
+  padding: 0.125em 0.25em;
+  width: 100%;
+}
+form label input:focus {
+  outline: none;
+}
+form label input:-webkit-autofill {
+  background-color: transparent !important;
+}
+
+form button.submit {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid #333;
+  line-height: 1em;
+  padding: 0.5em 0.5em;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+form button:hover,
+form button:focus,
+form button:active {
+  background: #333;
+  color: #fff;
+  outline: none;
+}
+
+.submit-btn {
+  text-align: center;
+  font-size: 24px;
+}
+
+/* 댓글 작성 창 끝 */
 
 /* 본문 끝 */
