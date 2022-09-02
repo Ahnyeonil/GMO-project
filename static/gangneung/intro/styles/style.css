@@ -197,6 +197,19 @@ main {
     margin-bottom: 50px;
 }
 
+/* Tour Content */
+.tour-content_sokcho {
+    background-image: url("https://g-grafolio.pstatic.net/20191202_5/1575267571417NRM7p_JPEG/KakaoTalk_20180526_013156031.jpg");
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
 .tour-content__title {
     font-size: 50px;
     line-height: 1.5;

@@ -328,7 +328,7 @@ def comment_ayi():
 # 속초 포스팅 추가 접속 화면
 @app.route('/sokcho/posting')
 def posting():
-    return render_template('posting.html')
+    return render_template('/sokcho/posting.html')
 
 
 # 속초 포스팅 추가 페이지(posting.html) 데이터 서버와 클라이언트 통신
