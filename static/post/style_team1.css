@@ -1,16 +1,18 @@
+    /*mobile*/
     :root {
         /*Color*/
         --white-color: #FFFFFF;
         --black-color: #181818;
-        --gray-light-color: #A9A9A9;
+        --grey-light-color: #A9A9A9;
         --blue-color: #79B2DF;
 
         /*Font Size*/
         --font-large: 55px;
-        --font-medium: 18px;
-        --font-small: 14px;
-        --font-micro: 12px;
-   }
+        --font-medium: 28px;
+        --font-small: 18px;
+        --font-micro: 14px;
+        --font-sss: 10px;
+        }
 
     *{
         padding: 0;
@@ -24,12 +26,11 @@
         outline: none;
     }
 
-    ::placeholder, select, button, textarea {
-        font-family: 'Noto Sans KR', sans-serif;
-        color: var(--black-color);
-        font-weight: 400;
+    .writerid::placeholder, .area::placeholder {
+        text-align: center;
     }
 
+    /*Nav Bar*/
     nav {
         display: flex;
         flex-direction: row;
@@ -37,14 +38,15 @@
         align-items: center;
 
         position: sticky;
-        top: 0px;
+        top: 0;
+        z-index: 1;
 
         font-family: 'Black Han Sans', sans-serif;
-        font-size: var(--font-medium);
-
         background-color: var(--white-color);
+        box-shadow: 0 1px 5px var(--black-color);
+
         width: 100%;
-        height: 60px;
+        height: 50px;
         padding: 20px 7%;
     }
 
@@ -52,16 +54,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: var(--font-micro);
     }
 
     nav .logo:hover {
         cursor: pointer;
     }
 
-    nav .logo i {
-        color: var(--blue-color);
+    nav .logo img {
         margin-right: 10px;
-        padding-bottom: 2px;
+        width: 20px;
+        height: 20px;
     }
 
     .nav-title {
@@ -79,9 +82,9 @@
         position: absolute;
         z-index: 1;
         background-color: var(--white-color);
-        min-width : 60px;
+        min-width : 45px;
         max-height: 120px;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 10px 10px;
         padding-bottom: 12px;
     }
 
@@ -89,7 +92,7 @@
         display: block;
         text-decoration : none;
         color: var(--black-color);
-        font-size: var(--font-small);
+        font-size: var(--font-micro);
         height: 30px;
         padding-top: 12px;
     }
@@ -100,13 +103,13 @@
 
     .dropdown-content a:hover{
         color: var(--blue-color);
-        font-size: var(--font-medium)
+        font-size: var(--font-small)
     }
 
     .menu-tour {
-        width: 60px;
+        width: 45px;
         height: 100%;
-        padding-top : 6px;
+        padding-top : 5px;
 
         position: relative;
         display: inline-block;
@@ -115,21 +118,21 @@
         text-align: center;
 
         border : none;
-        border-radius : 20px 20px 0 0;
+        border-radius : 10px 10px 0 0;
         background-color: var(--white-color);
 
         cursor : pointer;
         color : var(--black-color);
-        font-weight: 400;
 
         font-family: 'Black Han Sans', sans-serif;
-        font-size: var(--font-medium);
+        font-size: var(--font-micro);
     }
 
     .menu-post {
-        min-width: 60px;
+        min-width: 45px;
         height: 100%;
         border-radius: 25px;
+        font-size: var(--font-micro);
 
         display: flex;
         justify-content: center;
@@ -144,6 +147,7 @@
         color: var(--white-color);
     }
 
+    /*Header*/
     header {
         background-image: url("https://blog.kakaocdn.net/dn/JynUC/btq7ntHTPpF/KERoadzbKaDKmtG2f2fXh0/img.jpg");
         background-position: center;
@@ -156,13 +160,12 @@
         justify-content: center;
 
         width: 100%;
-        height: 250px;
+        height: 170px;
         padding-top: 10px;
 
         font-family: 'Black Han Sans', sans-serif;
-        font-size: var(--font-large);
+        font-size: var(--font-medium);
         font-weight: lighter;
-        line-height: 55px;
    }
 
     header span {
@@ -176,29 +179,52 @@
         cursor: pointer;
     }
 
+    /*Page Description*/
     .page-dsc {
         width: 100%;
-        height: 60px;
+        height: 50px;
 
         padding: 5px 0 0 7%;
-        border-bottom: solid 1px var(--gray-light-color);
+        border-bottom: solid 1px var(--grey-light-color);
 
         display: flex;
         justify-content: flex-start;
         align-items: center;
 
         font-family: 'Black Han Sans', sans-serif;
-        font-size: var(--font-medium);
+        font-size: var(--font-micro);
     }
 
+    .page-dsc div {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .page-dsc i {
+        margin-bottom: 5px;
+    }
+
+    /*Post Box*/
     .post-box {
         width: 100%;
-        height: 500px;
+        height: 300px;
+        margin-bottom: 30px;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    ::placeholder, .writerid, .area, .star, .file, .post-title, textarea, .submit {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: var(--black-color);
+        font-size: var(--font-sss);
     }
 
     .info {
@@ -207,22 +233,53 @@
         align-items: center;
 
         width: 100%;
+        height: 45px;
         padding: 0 7%;
     }
 
-    .city, .area, .star {
-        width: 33%;
-        height: 50px;
+    .writerid, .area, .star{
+        width: 19%;
+        height: 25px;
+        appearance: none;
+        border: solid 1px var(--grey-light-color);
+        border-radius: 5px;
+        padding: 0 2%;
     }
 
-    select:hover {
+    .star {
+      position: relative;
+      width: 25%;
+      border-radius: 5px;
+      border: 1px solid var(--grey-light-color);
+      background: url('https://cdn-icons-png.flaticon.com/512/57/57055.png') calc(100% - 7px) center no-repeat;
+      background-size: 13px;
+      cursor: pointer;
+    }
+
+    .file {
+        width: 80px;
+        padding: 10px 0;
+    }
+
+    ::file-selector-button {
+        background-color: var(--white-color);
+        border: solid 1px var(--grey-light-color);
+        width: 80px;
+        height: 25px;
+        border-radius: 5px;
+        margin-right: 10px;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    ::file-selector-button:hover {
+        background-color: var(--black-color);
+        border: none;
+        color: white;
         cursor: pointer;
     }
 
-    .v-line {
-        border-left : solid 1px var(--gray-light-color);
-        height : 25px;
-        margin-right: 10px;
+    .fa-regular fa-square-caret-down {
+        color: var(--black-color);
     }
 
     .write {
@@ -231,23 +288,23 @@
 
         display: flex;
         flex-direction: column;
-        border: solid 1px var(--gray-light-color);
+        border: solid 1px var(--grey-light-color);
     }
 
     .post-title {
-        padding: 20px 20px 20px 20px;
+        padding: 10px 10px 10px 10px;
         width: 100%;
     }
 
-    .write hr {
-        width: 96%;
-        height: 1px;
-        margin: auto;
-        background-color: var(--gray-light-color);
+    hr {
+        width: 100%;
+        height: 2px;
+        margin: auto auto 10px auto;
+        background-color: var(--grey-light-color);
     }
 
     textarea {
-        padding: 20px;
+        padding: 0 10px;
         width: 100%;
         height: 100%;
         resize: none;
@@ -263,14 +320,14 @@
     }
 
     .submit {
-        width: 100px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
 
         background-color: var(--black-color);
-        margin: 30px;
+        margin: 15px;
 
         border: none;
-        border-radius: 12px;
+        border-radius: 50px;
 
         color: var(--white-color);
         font-weight: 700;
@@ -281,20 +338,188 @@
         background-color: var(--blue-color);
     }
 
+    /*tablet*/
+    @media screen and (min-width: 768px) {
+        nav {
+            padding: 20px 10%;
+            height: 40px;
+        }
+
+        nav .logo {
+        font-size: var(--font-micro);
+        }
+
+        .menu-tour, .menu-post {
+            width: 60px;
+        }
+
+        .menu-tour {
+            border-radius: 20px 20px 0 0;
+        }
+
+        .dropdown-content {
+            min-width: 60px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        header {
+                height: 180px;
+                font-size: var(--font-medium);
+        }
+
+        .post-box {
+            height: 300px;
+        }
+
+        .write {
+            width: 80%;
+        }
+
+        .write hr {
+            margin: auto auto 15px auto;
+        }
+
+        .page-dsc {
+            height: 40px;
+            font-size: var(--font-micro);
+            padding: 5px 0 0 10%;
+        }
+
+        .info {
+            height: 80px;
+            padding: 0 10%;
+        }
+
+        .writerid, .area, .star{
+            width: 26%;
+            height: 35px;
+            appearance: none;
+            border: solid 1px var(--grey-light-color);
+            border-radius: 5px;
+            padding: 0 2%;
+        }
+
+        .writerid::placeholder, .area::placeholder {
+            text-align: left;
+        }
+
+        .file::file-selector-button {
+            height: 35px;
+            font-size: var(--font-sss);
+            font-family: 'Noto Sans KR', sans-serif;
+            border-radius: 0;
+        }
+
+        .post-title {
+            padding: 15px;
+        }
+
+        textarea {
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .submit {
+            width: 70px;
+            height: 40px;
+            margin: 20px;
+            border-radius: 12px;
+        }
+    }
+
+    /*desktop*/
     @media screen and (min-width: 1024px) {
+        ::placeholder, select, button, textarea, .writerid, .area, .post-title, .file, .btn-file-upload {
+            font-size: var(--font-micro);
+        }
+
+        nav {
+            padding: 15px 15%;
+            height: 60px;
+        }
+
+        .nav-title {
+            font-size: var(--font-small)
+        }
+
+        .menu-tour, .menu-post {
+            width: 80px;
+            font-size: var(--font-small);
+        }
+
+        .menu-tour {
+            border-radius: 20px 20px 0 0;
+        }
+
+        .dropdown-content {
+            min-width: 80px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .dropdown-content a {
+            font-size: var(--font-small);
+        }
+
+        header {
+            height: 250px;
+            font-size: var(--font-large);
+            line-height: 55px;
+        }
+
+        .post-box {
+            height: 500px;
+        }
+
+        ::placeholder, .writerid, .area, .star, .file::file-selector-button, .post-title, textarea, .submit {
+            font-size: var(--font-micro);
+        }
+
         .write {
             width: 70%;
         }
 
-        nav {
-            padding: 20px 15% 15px 15%;
-        }
-
         .page-dsc {
             padding: 5px 0 0 15%;
+            height: 60px;
+            font-size: var(--font-small);
         }
 
         .info {
             padding: 0 15%;
+        }
+
+        .writerid, .area, .star{
+            width: 28%;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .writerid::placeholder, .area::placeholder {
+            text-align: left;
+        }
+
+        .file::file-selector-button {
+            height: 40px;
+            font-family: 'Noto Sans KR', sans-serif;
+            border-radius: 0;
+        }
+
+        .post-title{
+            padding: 20px;
+        }
+
+        textarea {
+            padding: 0 20px;
+        }
+
+        .write hr {
+            margin: auto auto 25px auto;
+        }
+
+        .submit {
+            width: 100px;
+            height: 40px;
+            margin: 30px;
+            border-radius: 12px;
         }
     }

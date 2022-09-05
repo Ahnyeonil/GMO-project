@@ -19,7 +19,7 @@
     <!--Nav Bar-->
     <nav>
         <a href="/" class="logo">
-            <i class="fa-solid fa-plane"></i>
+            <img src="https://cdn-icons-png.flaticon.com/512/1777/1777164.png">
             <span class="nav-title">GMO</span>
         </a>
         <div class="menu">
@@ -34,23 +34,6 @@
         </div>
     </nav>
 
-    <!--<nav>
-        <a href="../index.html" class="logo">
-            <i class="fa-solid fa-plane"></i>
-            <span class="nav-title">GMO</span>
-        </a>
-        <div class="menu">
-            <div class="menu-tour">
-                <span class="tour">관광</span>
-                <div class="dropdown-content">
-                    <a href="../gangneung/intro.html">강릉</a>
-                    <a href="intro.html">속초</a>
-                </div>
-            </div>
-            <a href="PostingList.html" class="menu-post">후기</a>
-        </div>
-    </nav>-->
-
     <!--Header-->
     <header>
         <a href="/">
@@ -61,6 +44,7 @@
 
     <!--Page Description-->
     <div class="page-dsc">
+        <div id="go-back"><i class="fa-solid fa-circle-chevron-left"></i></div>
         <span>여행 후기 등록하기</span>
     </div>
 
@@ -68,19 +52,16 @@
     <form type="form" id="sform" name="sform" class="post-box" enctype="multipart/form-data" method="post" action="/post">
         <div class="info">
             <input id="writerid" name="writerid" type="text" class="writerid" placeholder="작성자">
-            <div class='v-line'></div>
             <input id="dst" name="dst" type="text" class="area" placeholder="장소">
-            <div class='v-line'></div>
             <select id="star" name="star" class="star">
                 <option selected>별점 선택</option>
+                <i class="fa-regular fa-square-caret-down"></i>
                 <option value="1">⭐</option>
                 <option value="2">⭐⭐</option>
                 <option value="3">⭐⭐⭐</option>
                 <option value="4">⭐⭐⭐⭐</option>
                 <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
-        </div>
-        <div class="info">
             <input type="file" id="file" name="file" class="file" required="">
         </div>
         <div class="write">
@@ -88,8 +69,7 @@
             <hr>
             <textarea id="desc" name="desc" placeholder="내용을 입력하세요"></textarea>
             <div class="submitArea">
-                <!--onclick="save_post_sc()" type="button"-->
-                <button type="submit" class="submit">등록</button>
+                <button onclick="save_post_sc()" type="submit" class="submit">등록</button>
             </div>
         </div>
     </form>
