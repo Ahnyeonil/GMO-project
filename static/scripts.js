@@ -256,7 +256,12 @@ function simple_detail_call(title) {
     })
 }
 
-// 포스팅-속초
+// 속초-포스트-뒤로 가기 버튼
+document.getElementById('go-back').addEventListener('click', () => {
+  window.history.back();
+});
+
+// 속초-포스트-저장
 function save_post_sc() {
     let writerid = $('#writerid').val()
     let dst = $('#dst').val()
