@@ -4,7 +4,7 @@ import random
 import string
 import requests
 
-from flask import Flask, render_template, request, jsonify, redirect, session
+from flask import Flask, render_template, request, jsonify, redirect
 from bs4 import BeautifulSoup
 
 # mongodb url 변경
@@ -125,8 +125,6 @@ def post():
     # 포스팅 작성 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
     if request.method == 'POST':
 
-        print(request.form)
-        print(request.files)
         # file은 request.files로 받아 옵니다
         title_receive = request.form['title']
         desc_receive = request.form['desc']
@@ -167,21 +165,86 @@ def post():
 
     return render_template("gangneung/post.html")
 
+@app.route("/post/update", methods=["POST"])
+def post_update():
+    # 포스팅 수정 기능 (form enctype 처리법을 몰라서 ajax 없이 form에서 바로 요청 됩니다)
+
+    # file은 request.form 받아 옵니다
+    _id = request.form['_id']
+    title_receive = request.form['title']
+    desc_receive = request.form['desc']
+    writerid_receive = request.form['writerid']
+    star_receive = request.form['star']
+
+    original = db.posting.find_one({'_id': ObjectId(_id)})
+
+    if original['file'] != request.form['fileName']:
+
+        file_receive = request.files['file']
+
+        path = "./static/images/"
+
+        # 파일 이름에 랜덤 문자열 삽입
+        length_of_string = 8
+        random_string = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length_of_string))
+        receive_filename = file_receive.filename
+        index_temp = receive_filename.find(".")
+        filename = receive_filename[:index_temp] + random_string + receive_filename[index_temp:]
+
+        # 이미지 업로드 경로가 존재 하지 않을 경우 생성
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+        # 설정한 저장 경로에 파일 이름으로 저장
+        file_receive.save(path + filename)
+    else:
+        filename = request.form['fileName']
+
+    # DB에 보낼 데이터 dict 저장
+    doc = {
+        'title': title_receive,
+        'desc': desc_receive,
+        'writerid': writerid_receive,
+        'star': int(star_receive),
+        'file': filename
+    }
+    db.posting.update_one({'_id': ObjectId(_id)}, {'$set': doc})
+
+    titlepost = db.posting.find_one({'_id': ObjectId(_id)})
+
+    titlepost['_id'] = str(titlepost['_id'])
+
+    # POST => redirect
+    return render_template("/gangneung/post.html")
+
 
 @app.route("/post/list", methods=["POST", "GET"])
 def post_list_send():
-    all_post = list(db.posting.find({}, {'_id': False}))
+    all_post = list(db.posting.find())
+
+    for a in all_post:
+        a['_id'] = str(a['_id'])
 
     return jsonify({'posts': all_post})
 
 
 @app.route("/post/simpledetail", methods=["POST", "GET"])
 def post_simpledetail_send():
-    if request.method == 'POST':
-        title_receive = request.form['titlename']
-        titlepost = db.posting.find_one({'title': title_receive}, {'_id': False})
 
-    return jsonify({'postdetail': titlepost})
+    if request.method == 'POST':
+        id_receive = request.form['_id']
+        titlepost = db.posting.find_one({'_id': ObjectId(id_receive)})
+
+        titlepost['_id'] = str(titlepost['_id'])
+
+        return jsonify({'postdetail': titlepost})
+
+    id_receive = request.values['_id']
+    titlepost = db.posting.find_one({'_id': ObjectId(id_receive)})
+
+    titlepost['_id'] = str(titlepost['_id'])
+
+    return render_template("sokcho/post.html", titlepost=titlepost)
 
 
 @app.route("/detail", methods=["POST", "GET"])

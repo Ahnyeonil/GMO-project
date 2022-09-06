@@ -11,7 +11,7 @@
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../static/post/style_team1.css">
-    <link rel="stylesheet" href="../../static/gangneung/intro/styles/style.css"/>
+    <link rel="stylesheet" href="../../static/post/ayi.css"/>
     <link rel="stylesheet" href="../../static/gangneung/intro/styles/grid.min.css"/>
     <!-- Google Web Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -24,28 +24,10 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
     <title>G.M.O</title>
-    <script>
-        function goMain(){
-            location.href = '/'
-        }
-
-        function changeArea(){
-
-            if($('#select_').val() == '1'){
-                location.reload()
-            } else if($('#select_').val() == '2'){
-                location.href = '/gangneung/intro'
-            }
-        }
-
-        function goPost(){
-            location.href = '/ayi/post'
-        }
-    </script>
 </head>
 <body>
     <!--Nav Bar-->
-    <nav>
+<!--    <nav>
         <a href="/" class="logo">
             <i class="fa-solid fa-plane"></i>
             <span class="nav-title">GMO</span>
@@ -61,14 +43,31 @@
             <a href="/sokcho/post" class="menu-post">후기작성</a>
             <a href="/post" class="menu-post">후기</a>
         </div>
+    </nav>-->
+
+    <!--Nav Bar-->
+    <nav>
+        <a href="/" class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/1777/1777164.png">
+            <span class="nav-title">GMO</span>
+        </a>
+        <div class="menu">
+            <div class="menu-tour">
+                <span class="tour">관광</span>
+                <div class="dropdown-content">
+                    <a href="/gangneung/intro">강릉</a>
+                    <a href="/sokcho/intro">속초</a>
+                </div>
+            </div>
+            <a href="/post" class="menu-post">후기</a>
+        </div>
     </nav>
 
     <!--Header-->
     <header>
         <a href="/">
-            <span>속초</span>
-            <!--<span>강원도로</span>
-            <span>마실올래?</span>-->
+            <span>강원도로</span>
+            <span>마실올래?</span>
         </a>
     </header>
 
@@ -79,12 +78,12 @@
 
 <!-- Travel Content Part -->
     <main>
-        <section class="tour-content_sokcho">
+<!--        <section class="tour-content_sokcho">
             <h1 class="sr-only">Main image</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <!-- Gangneung Image & Name Part -->
+                        &lt;!&ndash; Gangneung Image & Name Part &ndash;&gt;
                         <div
                                 class="tour-content__desc"
                                 area-label="A picture of Sokcho sea"
@@ -94,7 +93,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!-- Travel List Part -->
         <section class="tour-list">
             <h1 class="sr-only">tourist list</h1>
@@ -107,7 +106,7 @@
                                 <a href="{{ i['link'] }}" class="card-link" target='_blank'>{{ i['title'] }}</a>
                             </h1>
                             <ul area-lable="Hashtag" class="tourist-attraction__taglist">
-                                <li>{% for t in i['tag'] %} #{{ t }} {% endfor %}</li>
+                                <li>{% for t in i['tag'] %} {{ t }} {% endfor %}</li>
                             </ul>
                             <p area-lable="Tourist attraction Description" class="tourist-attraction__desc">
                                 {{ i['desc'] }}
