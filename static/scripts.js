@@ -15,7 +15,7 @@ function weather_sokcho() {
                 <a href="/sokcho/intro">
                     <div class="card1">
                         <div class="card-img">
-                            <img src="https://i.redd.it/b3esnz5ra34y.jpg">
+                            <img src="https://g-grafolio.pstatic.net/20191202_5/1575267571417NRM7p_JPEG/KakaoTalk_20180526_013156031.jpg">
                         </div>
                         <div class="card_title">
                             <span>${temp} ℃</span>
@@ -101,6 +101,7 @@ function post_list_call() {
                 // let writerid = posts[i]['writerid']
                 // let star = posts[i]['star']
                 let file = posts[i]['file']
+                let _id = posts[i]['_id']
 
                 let temp_html = `<li class="card-item">
                                    <div class="card">
@@ -108,7 +109,7 @@ function post_list_call() {
                                      <div class="card_content">
                                        <h2 class="card_title">${title}</h2>
                                        <p class="card_text">${desc}</p>
-                                       <a href="#detail-popup"><button class="btn card_btn" onclick="simple_detail_call('${title}')">Read More</button></a>
+                                       <a href="#detail-popup"><button class="btn card_btn" onclick="simple_detail_call('${_id}')">Read More</button></a>
 <!--                                       <a href="/detail"><button class="btn card_btn">Read More</button></a>-->
                                      </div>
                                    </div>
@@ -214,12 +215,14 @@ function delete_comment(commentid) {
     });
 }
 
-function simple_detail_call(title) {
+function simple_detail_call(_id) {
 
+    location.href = '/post/simpledetail?_id=' + _id
+/*
     $.ajax({
         type: "POST",
         url: "/post/simpledetail",
-        data: {titlename: title},
+        data: {_id: _id},
         success: function (response) {
 
             if(response['postdetail'] === undefined)
@@ -254,31 +257,31 @@ function simple_detail_call(title) {
 
         }
     })
+    */
 }
 
-// 속초-포스트-뒤로 가기 버튼
-document.getElementById('go-back').addEventListener('click', () => {
-  window.history.back();
-});
 
 // 속초-포스트-저장
 function save_post_sc() {
-    let writerid = $('#writerid').val()
-    let dst = $('#dst').val()
-    let star = $('#star').val()
-    let title = $('#title').val()
-    let desc = $('#desc').val()
-    let file = $('#file').val()
+    alert("포스팅이 변경되었습니다.")
+    /*
+        let _id = $('#_id').val()
+        let writerid = $('#writerid').val()
+        let dst = $('#dst').val()
+        let star = $('#star').val()
+        let title = $('#title').val()
+        let desc = $('#desc').val()
+        let file = $('#file').val()
 
-    $.ajax({
-        type: 'POST',
-        enctype: 'multipart/form-data',
-        url: '/post',
-        data: { writerid:writerid, dst:dst, star:star, title:title, desc:desc, file:file},
-        success: function (response) {
-            alert(response['msg'])
-            window.location.reload()
-        }
-    });
+        $.ajax({
+            type: 'POST',
+            enctype: 'multipart/form-data',
+            url: '/post/update',
+            data: { _id : _id, writerid:writerid, dst:dst, star:star, title:title, desc:desc, file:file},
+            success: function (response) {
+                alert("포스팅이 변경되었습니다.")
+                document.location.href = '/post';
+            }
+        });
+    }*/
 }
-

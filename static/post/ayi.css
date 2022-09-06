@@ -50,7 +50,7 @@ li {
 }
 
 /* Tour */
-.tour {
+.tour_ {
     background: rgba(0, 0, 0, 0.3);
     background-blend-mode: multiply;
     background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);

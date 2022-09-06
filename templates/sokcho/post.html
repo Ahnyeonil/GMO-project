@@ -14,6 +14,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        window.onload = function (){
+
+            // 속초-포스트-뒤로 가기 버튼
+            document.getElementById('go-back').addEventListener('click', () => {
+                document.location.href = '/post';
+            });
+
+            let elements = document.getElementsByClassName("file-select");
+
+            let fileFunction = function() {
+                alert($('#file').val() + ' 파일이 등록되었습니다.')
+
+                let split = $('#file').val()
+                let splitLastValue = split.split('\\').reverse()[0]
+                $('#fileName').val(splitLastValue)
+            };
+
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('change', fileFunction, false);
+            }
+
+            $('#star').val('{{ titlepost.star }}').prop("selected",true);
+        }
+    </script>
 </head>
 <body>
     <!--Nav Bar-->
@@ -27,10 +53,10 @@
                 <span class="tour">관광</span>
                 <div class="dropdown-content">
                     <a href="/gangneung/intro">강릉</a>
-                    <a href="sokcho/intro">속초</a>
+                    <a href="/sokcho/intro">속초</a>
                 </div>
             </div>
-            <a href="/sokcho/PostingList" class="menu-post">후기</a>
+            <a href="/post" class="menu-post">후기</a>
         </div>
     </nav>
 
@@ -45,16 +71,17 @@
     <!--Page Description-->
     <div class="page-dsc">
         <div id="go-back"><i class="fa-solid fa-circle-chevron-left"></i></div>
-        <span>여행 후기 등록하기</span>
+        <span>여행 후기 목록</span>
     </div>
 
     <!--Posting Area-->
-    <form type="form" id="sform" name="sform" class="post-box" enctype="multipart/form-data" method="post" action="/post">
+    <form type="form" id="sform" name="sform" class="post-box" enctype="multipart/form-data" method="post" action="/post/update">
         <div class="info">
-            <input id="writerid" name="writerid" type="text" class="writerid" placeholder="작성자">
-            <input id="dst" name="dst" type="text" class="area" placeholder="장소">
+            <input type="hidden" name="_id" id="_id" value="{{ titlepost._id }}">
+            <input id="writerid" name="writerid" type="text" class="writerid" value="{{ titlepost.writerid }}" placeholder="작성자">
+            <!--<input id="dst" name="dst" type="text" class="area" value="{{ titlepost.title }}" placeholder="장소">-->
             <select id="star" name="star" class="star">
-                <option selected>별점 선택</option>
+                <option value="0">별점 선택</option>
                 <i class="fa-regular fa-square-caret-down"></i>
                 <option value="1">⭐</option>
                 <option value="2">⭐⭐</option>
@@ -62,14 +89,15 @@
                 <option value="4">⭐⭐⭐⭐</option>
                 <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
-            <input type="file" id="file" name="file" class="file" required="">
+            <input type="file" id="file" name="file" class="file file-select" value="{{ titlepost.file }}">
+            <input type="text" id="fileName" name="fileName" class="area" value="{{ titlepost.file }}" readonly>
         </div>
         <div class="write">
-            <input id="title" name="title" type="text" class="post-title" placeholder="제목">
+            <input id="title" name="title" type="text" class="post-title" value="{{ titlepost.title }}" placeholder="제목">
             <hr>
-            <textarea id="desc" name="desc" placeholder="내용을 입력하세요"></textarea>
+            <textarea id="desc" name="desc" placeholder="내용을 입력하세요">{{ titlepost.desc }}</textarea>
             <div class="submitArea">
-                <button onclick="save_post_sc()" type="submit" class="submit">등록</button>
+                <button onclick="save_post_sc()" type="submit" class="submit">수정</button>
             </div>
         </div>
     </form>

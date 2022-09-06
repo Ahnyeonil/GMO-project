@@ -2,24 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eba8a8bd-117d-4211-8a8d-f9d0009904b8" name="변경" comment="ds">
+      <change afterPath="$PROJECT_DIR$/static/post/ayi.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/06.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/1 (1)ubt5WdYx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/17a053b1cd752ac8bm1bhhBV0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/17a053e8c2282b50sl8VInfE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/3Epf7puYE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/59O7YRv2X.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/gang.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/post/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/post/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gangneung/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/gangneung/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sokcho/intro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sokcho/intro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sokcho/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sokcho/post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,14 +38,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "list.type.of.created.stylesheet": "CSS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="gmo-project" />
@@ -83,6 +87,10 @@
       <workItem from="1661967605685" duration="553000" />
       <workItem from="1661968561699" duration="3331000" />
       <workItem from="1661973595702" duration="7612000" />
+      <workItem from="1662090352515" duration="1214000" />
+      <workItem from="1662097469684" duration="649000" />
+      <workItem from="1662101147328" duration="11000" />
+      <workItem from="1662115656309" duration="6118000" />
     </task>
     <task id="LOCAL-00001" summary="ds">
       <created>1661968046162</created>
@@ -122,7 +130,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1661536796233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/postPage_team1_css$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661980798984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/postPage_team1_css$app.coverage" NAME="app 커버리지 결과" MODIFIED="1662485752456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661956397076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
