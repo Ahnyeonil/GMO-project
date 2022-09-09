@@ -329,3 +329,10 @@ form button:active {
 /* 댓글 작성 창 끝 */
 
 /* 본문 끝 */
+
+.comment-common {
+    appearance: none;
+    border: solid 1px var(--grey-light-color);
+    border-radius: 5px;
+    padding: 0 2%;
+}
