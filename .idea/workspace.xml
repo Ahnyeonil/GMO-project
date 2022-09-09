@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eba8a8bd-117d-4211-8a8d-f9d0009904b8" name="변경" comment="ds">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/detail/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/detail/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gangneung/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gangneung/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,7 @@
       <workItem from="1662101147328" duration="11000" />
       <workItem from="1662115656309" duration="6118000" />
       <workItem from="1662663028033" duration="595000" />
-      <workItem from="1662695864971" duration="597000" />
+      <workItem from="1662695864971" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="ds">
       <created>1661968046162</created>
