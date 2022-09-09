@@ -15,7 +15,7 @@ function weather_sokcho() {
                 <a href="/sokcho/intro">
                     <div class="card1">
                         <div class="card-img">
-                            <img src="https://g-grafolio.pstatic.net/20191202_5/1575267571417NRM7p_JPEG/KakaoTalk_20180526_013156031.jpg">
+                            <img src="http://tong.visitkorea.or.kr/cms/resource/63/2733163_image2_1.jpg">
                         </div>
                         <div class="card_title">
                             <span>${temp} ℃</span>
@@ -40,7 +40,7 @@ function weather_gangneung() {
                 <a href="/gangneung/intro">
                     <div class="card1">
                         <div class="card-img">
-                            <img src="https://i.redd.it/b3esnz5ra34y.jpg">
+                            <img src="https://www.gtdc.or.kr/v2.1/img/business/searoad/img_top.jpg">
                         </div>
                         <div class="card_title">
                             <span>${temp} ℃</span>
