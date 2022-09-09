@@ -72,15 +72,15 @@
         <div class="post-comment">
           <span>댓글달기</span>
           <div class="comment-comment">
-            <input placeholder="Add Comment..." name="comment" type="text" required="">
+            <input class="comment-common" placeholder="Add Comment..." name="comment" type="text" required="">
           </div>
           <div class="comment-profile">
-            <input placeholder="Author" name="author" type="text" required="">
-            <input placeholder="Password" name="password" type="password" required="">
+            <input class="comment-common" placeholder="Author" name="author" type="text" required="">
+            <input class="comment-common" placeholder="Password" name="password" type="password" required="">
           </div>
           <input class="hiddenid" type="hidden" name="postingid" value="{{postlist[0]['_id']}}"/>
           <div>
-            <button type="submit">나도 한 마디</button>
+            <button type="submit" class="mt-2">나도 한 마디</button>
           </div>
         </div>
       </form>
