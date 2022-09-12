@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eba8a8bd-117d-4211-8a8d-f9d0009904b8" name="변경" comment="ds">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sokcho/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sokcho/post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +87,8 @@
       <workItem from="1662101147328" duration="11000" />
       <workItem from="1662115656309" duration="6118000" />
       <workItem from="1662663028033" duration="595000" />
-      <workItem from="1662695864971" duration="1015000" />
+      <workItem from="1662695864971" duration="1104000" />
+      <workItem from="1662977179409" duration="1889000" />
     </task>
     <task id="LOCAL-00001" summary="ds">
       <created>1661968046162</created>
@@ -125,7 +128,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gmo_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661243116963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$test.coverage" NAME="test 커버리지 결과" MODIFIED="1661536796233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/postPage_team1_css$app.coverage" NAME="app 커버리지 결과" MODIFIED="1662695879950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/postPage_team1_css$app.coverage" NAME="app 커버리지 결과" MODIFIED="1662978935524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/GMO_project$app.coverage" NAME="app 커버리지 결과" MODIFIED="1661956397076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

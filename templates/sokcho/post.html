@@ -98,6 +98,7 @@
             <textarea id="desc" name="desc" placeholder="내용을 입력하세요">{{ titlepost.desc }}</textarea>
             <div class="submitArea">
                 <button onclick="save_post_sc()" type="submit" class="submit">수정</button>
+                <button onclick="delete_post_sc('{{ titlepost._id }}')" type="button" class="submit">삭제</button>
             </div>
         </div>
     </form>

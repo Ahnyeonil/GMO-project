@@ -285,3 +285,27 @@ function save_post_sc() {
         });
     }*/
 }
+
+
+function delete_post_sc(_id) {
+
+    if(confirm("삭제 하시겠습니까?"))
+    {
+
+        if(_id == '630fba7de2397ba9a399a2ef'){
+            alert("기본값이라 삭제할 수 없습니다.")
+            location.href = '/post'
+            return
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/sokcho/detail/deletepost',
+            data: {_id: _id},
+            success: function (response) {
+                alert(response['msg'])
+                location.href = '/post'
+            }
+        });
+    }
+}

@@ -428,5 +428,12 @@ def postinglist_get():
     return jsonify({'postings': posting_list})
 
 
+@app.route("/sokcho/detail/deletepost", methods=["POST", "GET"])
+def delete_post():
+    id_receive = request.form['_id']
+
+    db.posting.delete_one({'_id': ObjectId(id_receive)})
+    return jsonify({"msg": "포스팅 삭제 완료"})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
